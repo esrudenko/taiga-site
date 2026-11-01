@@ -45,6 +45,7 @@ function applyThemePhotos() {
     if (!img.dataset.srcDark) img.dataset.srcDark = img.getAttribute("src");
     const wanted = isLight ? img.dataset.srcLight : img.dataset.srcDark;
     if (img.getAttribute("src") !== wanted) img.setAttribute("src", wanted);
+    img.style.objectPosition = (isLight ? img.dataset.positionLight : img.dataset.positionDark) || "";
   });
 }
 
