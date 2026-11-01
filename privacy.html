@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Политика конфиденциальности | TAIGA</title>
+    <meta name="description" content="Политика обработки персональных данных пользователей сайта TAIGA: какие данные собирает форма заявки, зачем, где хранятся и как их удалить." />
+    <link rel="canonical" href="https://esrudenko.github.io/taiga-site/privacy.html" />
+    <meta name="theme-color" content="#0E0D0B" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="TAIGA" />
+    <meta property="og:title" content="Политика конфиденциальности | TAIGA" />
+    <meta property="og:description" content="Политика обработки персональных данных пользователей сайта TAIGA: какие данные собирает форма заявки, зачем, где хранятся и как их удалить." />
+    <meta property="og:url" content="https://esrudenko.github.io/taiga-site/privacy.html" />
+    <meta property="og:image" content="https://esrudenko.github.io/taiga-site/img/general/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="./img/general/favicon.png" />
+    <link rel="preload" href="./fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./fonts/prata-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="./css/fonts.css" />
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/policy.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/request.css" />
+    <script>
+      document.documentElement.classList.add("js");
+      if (localStorage.getItem("theme") === "light") {
+        document.documentElement.classList.add("light_theme");
+      }
+    </script>
+    <script src="./js/theme.js" defer></script>
+    <script src="./js/menu.js" defer></script>
+    <script src="./js/reveal.js" defer></script>
+    <script src="./js/request-form.js" defer></script>
+  </head>
+  <body>
+    <a class="skip_link" href="#main">Перейти к&nbsp;содержанию</a>
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container header_container">
+        <a class="logo_link" href="./index.html" aria-label="Taiga — на главную">
+          <img
+            class="logo_img"
+            src="./img/general/logo-header.webp"
+            alt=""
+            width="120"
+            height="70"
+          />
+        </a>
+
+        <nav class="header_nav" id="header_menu" aria-label="Основное меню">
+          <ul class="header_list">
+            <li><a class="header_link" href="./index.html#about">О бренде</a></li>
+            <li><a class="header_link" href="./catalog.html">Каталог</a></li>
+            <li><a class="header_link" href="./index.html#sewing">Пошив</a></li>
+            <li><a class="header_link" href="./index.html#delivery">Доставка</a></li>
+            <li><a class="header_link" href="#contacts">Контакты</a></li>
+          </ul>
+          <div class="menu_extra">
+            <p class="menu_note">Бурки ручной работы</p>
+            <button class="btn btn_primary menu_btn" type="button" data-open-request>Оставить заявку</button>
+          </div>
+        </nav>
+
+        <div class="header_actions">
+          <button
+            class="icon_btn theme_toggle"
+            type="button"
+            aria-label="Включить светлую тему"
+          >
+            <svg
+              class="theme_icon theme_icon_sun"
+              width="20"
+              height="20"
+              viewBox="0 0 22 22"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M10 3V1C10 0.45 10.45 0 11 0C11.55 0 12 0.45 12 1V3C12 3.55 11.55 4 11 4C10.45 4 10 3.55 10 3ZM17.36 6.05L18.77 4.63C19.16 4.24 19.16 3.61 18.77 3.22C18.38 2.83 17.75 2.83 17.36 3.22L15.95 4.64C15.56 5.03 15.56 5.66 15.95 6.05C16.34 6.44 16.97 6.44 17.36 6.05ZM21 10H19C18.45 10 18 10.45 18 11C18 11.55 18.45 12 19 12H21C21.55 12 22 11.55 22 11C22 10.45 21.55 10 21 10ZM11 18C10.45 18 10 18.45 10 19V21C10 21.55 10.45 22 11 22C11.55 22 12 21.55 12 21V19C12 18.45 11.55 18 11 18ZM4.64 6.05L3.22 4.64C2.83 4.25 2.83 3.61 3.22 3.23C3.61 2.85 4.25 2.84 4.63 3.23L6.04 4.64C6.43 5.03 6.43 5.67 6.04 6.05C5.65 6.43 5.02 6.44 4.64 6.05ZM15.95 15.95C15.56 16.34 15.56 16.98 15.95 17.36L17.36 18.77C17.75 19.16 18.39 19.16 18.77 18.77C19.16 18.38 19.16 17.74 18.77 17.36L17.36 15.95C16.98 15.56 16.34 15.56 15.95 15.95ZM1 12H3C3.55 12 4 11.55 4 11C4 10.45 3.55 10 3 10H1C0.45 10 0 10.45 0 11C0 11.55 0.45 12 1 12ZM4.64 18.78L6.05 17.37C6.44 16.98 6.44 16.34 6.05 15.96C5.66 15.58 5.02 15.57 4.64 15.96L3.23 17.37C2.84 17.76 2.84 18.4 3.23 18.78C3.61 19.17 4.25 19.17 4.64 18.78ZM11 5C7.69 5 5 7.69 5 11C5 14.31 7.69 17 11 17C14.31 17 17 14.31 17 11C17 7.69 14.31 5 11 5Z"
+                fill="currentColor"
+              />
+            </svg>
+            <svg
+              class="theme_icon theme_icon_moon"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M9 0C4.03 0 0 4.03 0 9C0 13.97 4.03 18 9 18C13.97 18 18 13.97 18 9C18 8.54 17.96 8.08 17.9 7.64C16.92 9.01 15.32 9.9 13.5 9.9C10.52 9.9 8.1 7.48 8.1 4.5C8.1 2.69 8.99 1.08 10.36 0.1C9.92 0.04 9.46 0 9 0Z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+
+          <button class="btn header_btn" type="button" data-open-request>Оставить заявку</button>
+
+          <button
+            class="icon_btn burger_btn"
+            type="button"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+            aria-controls="header_menu"
+          >
+            <span class="burger_line" aria-hidden="true"></span>
+            <span class="burger_line" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <article class="policy" aria-labelledby="policy_title">
+        <div class="container policy_container">
+          <p class="section_eyebrow">Документ</p>
+          <h1 class="section_title policy_title" id="policy_title">Политика конфиденциальности</h1>
+          <p class="policy_date">Редакция от&nbsp;1&nbsp;ноября 2026&nbsp;года</p>
+
+          <h2>1. Общие положения</h2>
+          <p>
+            Настоящая политика описывает, как обрабатываются персональные данные пользователей сайта бренда
+            TAIGA (далее&nbsp;— Сайт), которые они оставляют через форму заявки.
+          </p>
+          <p>
+            Оператор персональных данных&nbsp;— Курманалиева Динара Оразгалиевна, г.&nbsp;Астана,
+            Республика Казахстан. Адрес для обращений:
+            <a href="mailto:dinarakurmanalieva@bk.ru">dinarakurmanalieva@bk.ru</a>.
+          </p>
+          <p>
+            Обработка ведётся в&nbsp;соответствии с&nbsp;Законом Республики Казахстан «О&nbsp;персональных данных
+            и&nbsp;их&nbsp;защите», а&nbsp;для пользователей из&nbsp;Российской Федерации&nbsp;— также с&nbsp;Федеральным
+            законом №&nbsp;152-ФЗ «О&nbsp;персональных данных».
+          </p>
+
+          <h2>2. Какие данные мы получаем</h2>
+          <p>Через форму заявки вы&nbsp;можете передать:</p>
+          <ul>
+            <li>имя&nbsp;— как к&nbsp;вам обращаться;</li>
+            <li>контакт для связи: номер телефона, имя пользователя или номер в&nbsp;Telegram, номер WhatsApp или адрес электронной почты;</li>
+            <li>текст сообщения, например модель, размер, мерки и&nbsp;пожелания.</li>
+          </ul>
+          <p>
+            Сайт не&nbsp;использует учётные записи, не&nbsp;принимает оплату и&nbsp;не&nbsp;подключает сервисы аналитики.
+            Выбранные вами тема оформления и&nbsp;валюта сохраняются только в&nbsp;вашем браузере
+            и&nbsp;никуда не&nbsp;передаются.
+          </p>
+
+          <h2>3. Зачем мы их используем</h2>
+          <ul>
+            <li>чтобы ответить на&nbsp;вашу заявку и&nbsp;проконсультировать;</li>
+            <li>чтобы согласовать, изготовить и&nbsp;доставить заказ, в&nbsp;том числе пошив по&nbsp;вашим меркам.</li>
+          </ul>
+          <p>Данные не&nbsp;используются для рассылок и&nbsp;рекламы.</p>
+
+          <h2>4. Основание обработки</h2>
+          <p>
+            Данные обрабатываются на&nbsp;основании вашего согласия, которое вы&nbsp;даёте, отмечая
+            соответствующий пункт в&nbsp;форме заявки перед отправкой.
+          </p>
+
+          <h2>5. Как обрабатываются и&nbsp;где хранятся данные</h2>
+          <p>
+            Заявка передаётся по&nbsp;защищённому соединению (HTTPS) на&nbsp;сервер Сайта, который размещён
+            у&nbsp;хостинг-провайдера Hosting.kz на&nbsp;территории Республики Казахстан. Сервер не&nbsp;сохраняет заявку,
+            а&nbsp;сразу пересылает её&nbsp;оператору:
+          </p>
+          <ul>
+            <li>в&nbsp;мессенджер Telegram;</li>
+            <li>на&nbsp;электронную почту оператора (сервис Mail.ru).</li>
+          </ul>
+          <p>
+            Серверы Telegram и&nbsp;Mail.ru могут находиться за&nbsp;пределами Республики Казахстан. Отправляя
+            форму, вы&nbsp;соглашаетесь на&nbsp;такую трансграничную передачу.
+          </p>
+          <p>
+            Доступ к&nbsp;заявкам есть только у&nbsp;оператора. Данные не&nbsp;продаются и&nbsp;не&nbsp;передаются
+            третьим лицам, кроме случаев, предусмотренных законом. Если для доставки заказа нужно передать
+            ваши данные транспортной компании, это согласовывается с&nbsp;вами отдельно при оформлении заказа.
+          </p>
+
+          <h2>6. Срок хранения</h2>
+          <p>
+            Заявки хранятся 1&nbsp;год с&nbsp;момента получения, после чего удаляются. По&nbsp;вашему запросу
+            они могут быть удалены раньше.
+          </p>
+
+          <h2>7. Ваши права</h2>
+          <p>Вы&nbsp;можете в&nbsp;любой момент:</p>
+          <ul>
+            <li>узнать, какие ваши данные есть у&nbsp;оператора;</li>
+            <li>попросить исправить или удалить их;</li>
+            <li>отозвать согласие на&nbsp;обработку.</li>
+          </ul>
+          <p>
+            Для этого напишите на&nbsp;<a href="mailto:dinarakurmanalieva@bk.ru">dinarakurmanalieva@bk.ru</a>.
+            Мы&nbsp;ответим не&nbsp;позднее 10&nbsp;рабочих дней.
+          </p>
+
+          <h2>8. Изменения политики</h2>
+          <p>
+            Политика может обновляться. Актуальная редакция всегда опубликована на&nbsp;этой странице,
+            дата редакции указана в&nbsp;начале документа.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contacts">
+      <div class="container">
+        <div class="footer_top">
+          <div class="footer_brand">
+            <img
+              class="footer_logo"
+              src="./img/general/logo-header.webp"
+              alt="TAIGA"
+              width="270"
+              height="158"
+              loading="lazy"
+            />
+            <p class="footer_tagline">Бурки из оленьей шкуры</p>
+          </div>
+
+          <ul class="footer_contacts">
+            <li>
+              <a class="footer_contact" href="https://www.instagram.com/taiga_burki/" target="_blank" rel="noopener">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" />
+                </svg>
+                <span class="footer_contact_text"><span class="visually_hidden">Instagram: </span>@taiga_burki</span>
+              </a>
+            </li>
+            <li>
+              <a class="footer_contact" href="https://wa.me/77053397249" target="_blank" rel="noopener">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3.5 20.5l1.3-4.1A8.5 8.5 0 1 1 8 19.5l-4.5 1Z" />
+                  <path d="M9 8.3c0 3.4 3.3 6.7 6.7 6.7l1.1-1.4-1.9-1.1-.9.8a4.5 4.5 0 0 1-2.6-2.6l.8-.9-1.1-1.9L9 8.3Z" />
+                </svg>
+                <span class="footer_contact_text"><span class="visually_hidden">WhatsApp: </span>+7 705 339 7249</span>
+              </a>
+            </li>
+            <li>
+              <a class="footer_contact" href="https://t.me/dinarakurmanalieva" target="_blank" rel="noopener">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 4 2.8 11.2l6.4 2.3L11.5 20l3.3-4.2 4.9 3.7L21 4Z" />
+                  <path d="M9.2 13.5 21 4" />
+                </svg>
+                <span class="footer_contact_text"><span class="visually_hidden">Telegram: </span>@dinarakurmanalieva</span>
+              </a>
+            </li>
+            <li>
+              <a class="footer_contact" href="mailto:dinarakurmanalieva@bk.ru">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="5.5" width="18" height="13" rx="2" />
+                  <path d="m3.5 6.5 8.5 6.5 8.5-6.5" />
+                </svg>
+                <span class="footer_contact_text"><span class="visually_hidden">Email: </span>dinarakurmanalieva@bk.ru</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <nav class="footer_nav" aria-label="Навигация в подвале">
+          <ul class="footer_list">
+            <li><a class="footer_link" href="./index.html#about">О бренде</a></li>
+            <li><a class="footer_link" href="./catalog.html">Каталог</a></li>
+            <li><a class="footer_link" href="./index.html#sewing">Пошив</a></li>
+            <li><a class="footer_link" href="./index.html#delivery">Доставка</a></li>
+            <li><a class="footer_link" href="#contacts">Контакты</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer_bottom">
+          <p>© 2026 TAIGA. Все права защищены.</p>
+          <a class="footer_link" href="./privacy.html" aria-current="page">Политика конфиденциальности</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- REQUEST FORM -->
+    <dialog class="request" id="request_dialog" aria-labelledby="request_title">
+      <button class="icon_btn request_close" type="button" aria-label="Закрыть форму" data-close-request>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <form class="request_form" id="request_form" novalidate>
+        <p class="section_eyebrow request_eyebrow">Заявка</p>
+        <h2 class="request_title" id="request_title">Оставить заявку</h2>
+        <p class="request_subtitle">
+          Расскажите, что вас интересует, — мы свяжемся с&nbsp;вами удобным способом.
+        </p>
+
+        <div class="field">
+          <label class="field_label" for="request_name">Как к&nbsp;вам обращаться</label>
+          <input
+            class="field_input"
+            id="request_name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            placeholder="Имя"
+            required
+            minlength="2"
+            maxlength="60"
+            aria-describedby="request_name_error"
+          />
+          <p class="field_error" id="request_name_error" aria-live="polite"></p>
+        </div>
+
+        <fieldset class="field">
+          <legend class="field_label">Как с&nbsp;вами связаться</legend>
+          <div class="contact_methods">
+            <label class="contact_method">
+              <input type="radio" name="method" value="phone" checked />
+              <span>Звонок</span>
+            </label>
+            <label class="contact_method">
+              <input type="radio" name="method" value="telegram" />
+              <span>Telegram</span>
+            </label>
+            <label class="contact_method">
+              <input type="radio" name="method" value="whatsapp" />
+              <span>WhatsApp</span>
+            </label>
+            <label class="contact_method">
+              <input type="radio" name="method" value="email" />
+              <span>Email</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label class="field_label" for="request_contact" id="request_contact_label">Телефон</label>
+          <input
+            class="field_input"
+            id="request_contact"
+            name="contact"
+            type="tel"
+            inputmode="tel"
+            autocomplete="tel"
+            placeholder="+7 900 000-00-00"
+            required
+            aria-describedby="request_contact_error"
+          />
+          <p class="field_error" id="request_contact_error" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label class="field_label" for="request_message">
+            Сообщение <span class="field_optional">— необязательно</span>
+          </label>
+          <textarea
+            class="field_input field_textarea"
+            id="request_message"
+            name="message"
+            rows="3"
+            maxlength="1000"
+            placeholder="Размер, модель, пожелания по пошиву…"
+          ></textarea>
+        </div>
+
+        <div class="field_trap" aria-hidden="true">
+          <label for="request_website">Не заполняйте это поле</label>
+          <input id="request_website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="field field_consent">
+          <label class="consent">
+            <input class="consent_input" id="request_consent" name="consent" type="checkbox" aria-describedby="request_consent_error" />
+            <span class="consent_box" aria-hidden="true"></span>
+            <span class="consent_text">
+              Я&nbsp;соглашаюсь на&nbsp;обработку персональных данных в&nbsp;соответствии
+              с&nbsp;<a href="./privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>
+            </span>
+          </label>
+          <p class="field_error" id="request_consent_error" aria-live="polite"></p>
+        </div>
+
+        <p class="request_error" id="request_error" role="alert" hidden>
+          Не&nbsp;удалось отправить заявку. Попробуйте ещё раз или напишите нам
+          в&nbsp;<a href="https://wa.me/77053397249" target="_blank" rel="noopener">WhatsApp</a>.
+        </p>
+
+        <button class="btn btn_primary btn_arrow request_submit" type="submit">
+          Отправить заявку
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </form>
+
+      <div class="request_success" id="request_success" hidden>
+        <span class="request_success_icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <h2 class="request_title" id="request_success_title">Спасибо!</h2>
+        <p class="request_subtitle" id="request_success_text">Заявка отправлена. Мы скоро свяжемся с&nbsp;вами.</p>
+        <button class="btn request_done" type="button" data-close-request>Закрыть</button>
+      </div>
+    </dialog>
+  </body>
+</html>

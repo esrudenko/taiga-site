@@ -1,0 +1,54 @@
+.policy {
+  padding: var(--section-space) 0;
+}
+
+.policy_container {
+  max-width: 820px;
+}
+
+.policy_title {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.policy_date {
+  margin: -0.5rem 0 2.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.policy h2 {
+  margin: 2.5rem 0 1rem;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 130%;
+}
+
+.policy p,
+.policy li {
+  font-size: 1rem;
+  line-height: 165%;
+  color: var(--color-text-muted);
+}
+
+.policy p + p,
+.policy ul + p,
+.policy p + ul {
+  margin-top: 0.75rem;
+}
+
+.policy ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.policy li::marker {
+  color: var(--color-accent);
+}
+
+.policy a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

@@ -18,12 +18,9 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="./img/general/favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Manrope:wght@400;500;600;700&family=Prata&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="./fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./fonts/prata-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="./css/fonts.css" />
     <link rel="stylesheet" href="./css/variables.css" />
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/header.css" />
@@ -402,7 +399,7 @@
                   data-position-light="center 30%"
                   data-photo-light="./img/catalog/kids-1-light.webp"
                 >
-                  <img src="./img/catalog/kids-1.webp" data-src-light="./img/catalog/kids-1-light.webp" alt="Светлые детские бурки с вышитым орнаментом" width="711" height="1067" loading="lazy" decoding="async" />
+                  <img src="./img/catalog/kids-1.webp" data-src-light="./img/catalog/kids-1-light.webp" data-position-dark="center 45%" data-position-light="center 45%" alt="Светлые детские бурки с вышитым орнаментом" width="711" height="1067" loading="lazy" decoding="async" />
                 </button>
               </li>
               <li>
@@ -413,7 +410,7 @@
                   data-photo="./img/catalog/kids-2.webp"
                   data-photo-light="./img/catalog/kids-2-light.webp"
                 >
-                  <img src="./img/catalog/kids-2.webp" data-src-light="./img/catalog/kids-2-light.webp" alt="Детские бурки с пёстрым мехом, вид сбоку" width="1280" height="853" loading="lazy" decoding="async" />
+                  <img src="./img/catalog/kids-2.webp" data-src-light="./img/catalog/kids-2-light.webp" data-position-light="center 48%" alt="Детские бурки с пёстрым мехом, вид сбоку" width="1280" height="853" loading="lazy" decoding="async" />
                 </button>
               </li>
               <li>
@@ -424,7 +421,7 @@
                   data-photo="./img/catalog/kids-3.webp"
                   data-photo-light="./img/catalog/kids-3-light.webp"
                 >
-                  <img src="./img/catalog/kids-3.webp" data-src-light="./img/catalog/kids-3-light.webp" alt="Коричневые детские бурки, вид спереди" width="1280" height="853" loading="lazy" decoding="async" />
+                  <img src="./img/catalog/kids-3.webp" data-src-light="./img/catalog/kids-3-light.webp" data-position-light="center 48%" alt="Коричневые детские бурки, вид спереди" width="1280" height="853" loading="lazy" decoding="async" />
                 </button>
               </li>
               <li>
@@ -435,7 +432,7 @@
                   data-photo="./img/catalog/kids-4.webp"
                   data-photo-light="./img/catalog/kids-4-light.webp"
                 >
-                  <img src="./img/catalog/kids-4.webp" data-src-light="./img/catalog/kids-4-light.webp" alt="Светлые детские бурки с тёмной полосой" width="1280" height="853" loading="lazy" decoding="async" />
+                  <img src="./img/catalog/kids-4.webp" data-src-light="./img/catalog/kids-4-light.webp" data-position-light="center 48%" alt="Светлые детские бурки с тёмной полосой" width="1280" height="853" loading="lazy" decoding="async" />
                 </button>
               </li>
             </ul>
@@ -595,6 +592,7 @@
 
         <div class="footer_bottom">
           <p>© 2026 TAIGA. Все права защищены.</p>
+          <a class="footer_link" href="./privacy.html">Политика конфиденциальности</a>
         </div>
       </div>
     </footer>
@@ -681,6 +679,23 @@
             maxlength="1000"
             placeholder="Размер, модель, пожелания по пошиву…"
           ></textarea>
+        </div>
+
+        <div class="field_trap" aria-hidden="true">
+          <label for="request_website">Не заполняйте это поле</label>
+          <input id="request_website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="field field_consent">
+          <label class="consent">
+            <input class="consent_input" id="request_consent" name="consent" type="checkbox" aria-describedby="request_consent_error" />
+            <span class="consent_box" aria-hidden="true"></span>
+            <span class="consent_text">
+              Я&nbsp;соглашаюсь на&nbsp;обработку персональных данных в&nbsp;соответствии
+              с&nbsp;<a href="./privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>
+            </span>
+          </label>
+          <p class="field_error" id="request_consent_error" aria-live="polite"></p>
         </div>
 
         <p class="request_error" id="request_error" role="alert" hidden>

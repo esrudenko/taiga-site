@@ -1,0 +1,3 @@
+<FilesMatch "(\.md|\.gitignore|\.htaccess)$">
+  Require all denied
+</FilesMatch>
