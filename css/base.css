@@ -307,6 +307,13 @@ html.scroll_locked {
   overflow: hidden;
 }
 
+html.scroll_locked body {
+  position: fixed;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
 .request,
 .lightbox,
 .header_nav {

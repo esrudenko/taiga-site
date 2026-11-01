@@ -2,10 +2,32 @@ document.addEventListener("touchstart", () => {}, { passive: true });
 
 const scrollLocks = new Set();
 
+let lockedScrollY = 0;
+
 function setScrollLock(name, isLocked) {
+  const wasLocked = scrollLocks.size > 0;
   if (isLocked) scrollLocks.add(name);
   else scrollLocks.delete(name);
-  document.documentElement.classList.toggle("scroll_locked", scrollLocks.size > 0);
+  const locked = scrollLocks.size > 0;
+  if (locked === wasLocked) return;
+
+  const root = document.documentElement;
+  const body = document.body;
+
+  if (locked) {
+    lockedScrollY = window.scrollY;
+    const scrollbarWidth = window.innerWidth - root.clientWidth;
+    body.style.top = `-${lockedScrollY}px`;
+    body.style.paddingRight = scrollbarWidth ? `${scrollbarWidth}px` : "";
+    root.classList.add("scroll_locked");
+  } else {
+    root.classList.remove("scroll_locked");
+    body.style.top = "";
+    body.style.paddingRight = "";
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, lockedScrollY);
+    root.style.scrollBehavior = "";
+  }
 }
 
 document.addEventListener(
