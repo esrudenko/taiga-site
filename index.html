@@ -11,15 +11,26 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Manrope:wght@400;500;600;700&family=Prata&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/hero.css" />
+    <link rel="stylesheet" href="./css/features.css" />
+    <link rel="stylesheet" href="./css/about.css" />
+    <link rel="stylesheet" href="./css/split.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/request.css" />
     <script>
-      // "js" class: scroll animations hide content only when JS is running
       document.documentElement.classList.add("js");
       if (localStorage.getItem("theme") === "light") {
         document.documentElement.classList.add("light_theme");
       }
     </script>
-    <script src="./script.js" defer></script>
+    <script src="./js/theme.js" defer></script>
+    <script src="./js/menu.js" defer></script>
+    <script src="./js/reveal.js" defer></script>
+    <script src="./js/request-form.js" defer></script>
+    <script src="./js/features.js" defer></script>
   </head>
   <body>
     <!-- HEADER -->
@@ -38,7 +49,7 @@
         <nav class="header_nav" id="header_menu" aria-label="Основное меню">
           <ul class="header_list">
             <li><a class="header_link" href="#about">О бренде</a></li>
-            <li><a class="header_link" href="#catalog">Каталог</a></li>
+            <li><a class="header_link" href="./catalog.html">Каталог</a></li>
             <li><a class="header_link" href="#sewing">Пошив</a></li>
             <li><a class="header_link" href="#delivery">Доставка</a></li>
             <li><a class="header_link" href="#contacts">Контакты</a></li>
@@ -112,7 +123,7 @@
             </p>
 
             <div class="hero_btns">
-              <a class="btn btn_primary btn_arrow" href="#catalog">
+              <a class="btn btn_primary btn_arrow" href="./catalog.html">
                 Смотреть коллекцию
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
@@ -159,7 +170,6 @@
       <!-- ABOUT -->
       <section class="about" id="about">
         <div class="container about_container">
-          <!-- Photo changes with the theme through CSS (--about-image) -->
           <div class="about_image reveal" aria-hidden="true"></div>
 
           <div class="about_content">
@@ -180,13 +190,9 @@
         </div>
       </section>
 
-      <!-- CATALOG -->
-      <section class="catalog" id="catalog"></section>
-
       <!-- SEWING -->
       <section class="sewing" id="sewing">
         <div class="container split">
-          <!-- Photo changes with the theme through CSS (--sewing-image) -->
           <div class="split_image reveal" aria-hidden="true"></div>
 
           <div class="split_content">
@@ -242,7 +248,6 @@
       <!-- DELIVERY -->
       <section class="delivery" id="delivery">
         <div class="container split">
-          <!-- Photo changes with the theme through CSS (--delivery-image) -->
           <div class="split_image reveal" aria-hidden="true"></div>
 
           <div class="split_content">
@@ -276,7 +281,7 @@
       </section>
     </main>
 
-    <!-- FOOTER / CONTACTS (looks the same in both themes) -->
+    <!-- FOOTER -->
     <footer class="footer" id="contacts">
       <div class="container">
         <div class="footer_top">
@@ -336,7 +341,7 @@
         <nav class="footer_nav" aria-label="Навигация в подвале">
           <ul class="footer_list">
             <li><a class="footer_link" href="#about">О бренде</a></li>
-            <li><a class="footer_link" href="#catalog">Каталог</a></li>
+            <li><a class="footer_link" href="./catalog.html">Каталог</a></li>
             <li><a class="footer_link" href="#sewing">Пошив</a></li>
             <li><a class="footer_link" href="#delivery">Доставка</a></li>
             <li><a class="footer_link" href="#contacts">Контакты</a></li>
@@ -345,13 +350,12 @@
 
         <div class="footer_bottom">
           <p>© 2026 TAIGA. Все права защищены.</p>
-          <!-- TODO: put the real privacy policy page here -->
-          <a class="footer_link" href="#">Политика конфиденциальности</a>
+          <p>Политика конфиденциальности</p>
         </div>
       </div>
     </footer>
 
-    <!-- REQUEST FORM (modal) -->
+    <!-- REQUEST FORM -->
     <dialog class="request" id="request_dialog" aria-labelledby="request_title">
       <button class="icon_btn request_close" type="button" aria-label="Закрыть форму" data-close-request>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -443,7 +447,6 @@
         </button>
       </form>
 
-      <!-- Shown after a successful submit -->
       <div class="request_success" id="request_success" hidden>
         <span class="request_success_icon" aria-hidden="true">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none">

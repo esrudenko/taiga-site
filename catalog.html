@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Каталог — TAIGA</title>
+    <link rel="icon" href="./img/general/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Manrope:wght@400;500;600;700&family=Prata&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/catalog.css" />
+    <link rel="stylesheet" href="./css/lightbox.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/request.css" />
+    <script>
+      document.documentElement.classList.add("js");
+      if (localStorage.getItem("theme") === "light") {
+        document.documentElement.classList.add("light_theme");
+      }
+    </script>
+    <script src="./js/theme.js" defer></script>
+    <script src="./js/menu.js" defer></script>
+    <script src="./js/reveal.js" defer></script>
+    <script src="./js/request-form.js" defer></script>
+    <script src="./js/catalog.js" defer></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container header_container">
+        <a class="logo_link" href="./index.html" aria-label="Taiga — на главную">
+          <img
+            class="logo_img"
+            src="./img/general/logo-header.png"
+            alt=""
+            width="120"
+            height="70"
+          />
+        </a>
+
+        <nav class="header_nav" id="header_menu" aria-label="Основное меню">
+          <ul class="header_list">
+            <li><a class="header_link" href="./index.html#about">О бренде</a></li>
+            <li><a class="header_link" href="./catalog.html" aria-current="page">Каталог</a></li>
+            <li><a class="header_link" href="./index.html#sewing">Пошив</a></li>
+            <li><a class="header_link" href="./index.html#delivery">Доставка</a></li>
+            <li><a class="header_link" href="#contacts">Контакты</a></li>
+          </ul>
+          <div class="menu_extra">
+            <p class="menu_note">Бурки ручной работы</p>
+            <button class="btn menu_btn" type="button" data-open-request>Оставить заявку</button>
+          </div>
+        </nav>
+
+        <div class="header_actions">
+          <button
+            class="icon_btn theme_toggle"
+            type="button"
+            aria-label="Включить светлую тему"
+          >
+            <svg
+              class="theme_icon theme_icon_sun"
+              width="20"
+              height="20"
+              viewBox="0 0 22 22"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M10 3V1C10 0.45 10.45 0 11 0C11.55 0 12 0.45 12 1V3C12 3.55 11.55 4 11 4C10.45 4 10 3.55 10 3ZM17.36 6.05L18.77 4.63C19.16 4.24 19.16 3.61 18.77 3.22C18.38 2.83 17.75 2.83 17.36 3.22L15.95 4.64C15.56 5.03 15.56 5.66 15.95 6.05C16.34 6.44 16.97 6.44 17.36 6.05ZM21 10H19C18.45 10 18 10.45 18 11C18 11.55 18.45 12 19 12H21C21.55 12 22 11.55 22 11C22 10.45 21.55 10 21 10ZM11 18C10.45 18 10 18.45 10 19V21C10 21.55 10.45 22 11 22C11.55 22 12 21.55 12 21V19C12 18.45 11.55 18 11 18ZM4.64 6.05L3.22 4.64C2.83 4.25 2.83 3.61 3.22 3.23C3.61 2.85 4.25 2.84 4.63 3.23L6.04 4.64C6.43 5.03 6.43 5.67 6.04 6.05C5.65 6.43 5.02 6.44 4.64 6.05ZM15.95 15.95C15.56 16.34 15.56 16.98 15.95 17.36L17.36 18.77C17.75 19.16 18.39 19.16 18.77 18.77C19.16 18.38 19.16 17.74 18.77 17.36L17.36 15.95C16.98 15.56 16.34 15.56 15.95 15.95ZM1 12H3C3.55 12 4 11.55 4 11C4 10.45 3.55 10 3 10H1C0.45 10 0 10.45 0 11C0 11.55 0.45 12 1 12ZM4.64 18.78L6.05 17.37C6.44 16.98 6.44 16.34 6.05 15.96C5.66 15.58 5.02 15.57 4.64 15.96L3.23 17.37C2.84 17.76 2.84 18.4 3.23 18.78C3.61 19.17 4.25 19.17 4.64 18.78ZM11 5C7.69 5 5 7.69 5 11C5 14.31 7.69 17 11 17C14.31 17 17 14.31 17 11C17 7.69 14.31 5 11 5Z"
+                fill="currentColor"
+              />
+            </svg>
+            <svg
+              class="theme_icon theme_icon_moon"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M9 0C4.03 0 0 4.03 0 9C0 13.97 4.03 18 9 18C13.97 18 18 13.97 18 9C18 8.54 17.96 8.08 17.9 7.64C16.92 9.01 15.32 9.9 13.5 9.9C10.52 9.9 8.1 7.48 8.1 4.5C8.1 2.69 8.99 1.08 10.36 0.1C9.92 0.04 9.46 0 9 0Z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+
+          <button class="btn header_btn" type="button" data-open-request>Оставить заявку</button>
+
+          <button
+            class="icon_btn burger_btn"
+            type="button"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+            aria-controls="header_menu"
+          >
+            <span class="burger_line" aria-hidden="true"></span>
+            <span class="burger_line" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- PAGE HERO -->
+      <section class="page_hero">
+        <div class="container page_hero_content">
+          <p class="section_eyebrow">Наследие Севера</p>
+          <h1 class="page_title">Каталог</h1>
+          <p class="page_subtitle">
+            Бурки TAIGA — тепло, натуральные материалы<br />и&nbsp;мастерство северных традиций
+          </p>
+        </div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section class="catalog" aria-label="Модели бурок">
+        <div class="container">
+        <article class="product" id="women" aria-labelledby="women_title">
+          <button class="product_zoom reveal" type="button" aria-label="Открыть фото крупно: Тёмные женские бурки с красной вышивкой">
+            <img class="product_photo" src="./img/catalog/women-1.jpg" data-src-light="./img/catalog/women-1-light.jpg" alt="Тёмные женские бурки с красной вышивкой" width="853" height="1280" />
+          </button>
+
+          <div class="product_content">
+            <p class="section_eyebrow product_eyebrow reveal">Коллекция TAIGA</p>
+            <h2 class="section_title product_title reveal" id="women_title" style="--reveal-delay: 0.1s">Женские бурки</h2>
+            <p class="product_price reveal" style="--reveal-delay: 0.15s">от&nbsp;26&nbsp;500&nbsp;₽ <span class="product_price_sep">/</span> от&nbsp;150&nbsp;000&nbsp;₸ <span class="product_price_sep">/</span> от&nbsp;$330</p>
+            <p class="product_price_note reveal" style="--reveal-delay: 0.15s">Итоговая цена зависит от&nbsp;размера, модели и&nbsp;индивидуальных предпочтений</p>
+            <p class="section_text reveal" style="--reveal-delay: 0.2s">
+              Элегантные и&nbsp;тёплые бурки из&nbsp;натуральной оленьей шкуры для холодного климата. Комфорт, надёжность и&nbsp;природная красота в&nbsp;каждой паре.
+            </p>
+
+            <ul class="product_thumbs reveal" style="--reveal-delay: 0.25s" aria-label="Другие фото">
+                <li>
+                  <button class="product_thumb" type="button">
+                    <img src="./img/catalog/women-2.jpg" data-src-light="./img/catalog/women-2-light.jpg" alt="Женские бурки с красным орнаментом, вид спереди" width="853" height="1280" loading="lazy" />
+                  </button>
+                </li>
+                <li>
+                  <button class="product_thumb" type="button">
+                    <img src="./img/catalog/women-3.jpg" data-src-light="./img/catalog/women-3-light.jpg" alt="Светлые женские бурки с вышивкой, голенища крупным планом" width="1280" height="853" loading="lazy" />
+                  </button>
+                </li>
+                <li>
+                  <button class="product_thumb" type="button">
+                    <img src="./img/catalog/women-4.jpg" data-src-light="./img/catalog/women-4-light.jpg" alt="Вышитый орнамент на меху крупным планом" width="853" height="1280" loading="lazy" />
+                  </button>
+                </li>
+            </ul>
+
+            <button
+              class="btn btn_primary btn_arrow reveal"
+              type="button"
+              style="--reveal-delay: 0.3s"
+              data-open-request
+              data-request-message="Интересуют женские бурки"
+            >
+              Подробнее
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </article>
+
+        <div class="product_divider" aria-hidden="true">
+          <img src="./img/home-page/icon-snowflake.svg" alt="" width="24" height="24" />
+        </div>
+        <article class="product" id="men" aria-labelledby="men_title">
+          <button class="product_zoom reveal" type="button" aria-label="Открыть фото крупно: Мужские бурки из оленьей шкуры — пара, вид спереди">
+            <img class="product_photo" src="./img/catalog/men-1.jpg" data-src-light="./img/catalog/men-1-light.jpg" alt="Мужские бурки из оленьей шкуры — пара, вид спереди" width="853" height="1280" />
+          </button>
+
+          <div class="product_content">
+            <p class="section_eyebrow product_eyebrow reveal">Коллекция TAIGA</p>
+            <h2 class="section_title product_title reveal" id="men_title" style="--reveal-delay: 0.1s">Мужские бурки</h2>
+            <p class="product_price reveal" style="--reveal-delay: 0.15s">от&nbsp;44&nbsp;200&nbsp;₽ <span class="product_price_sep">/</span> от&nbsp;250&nbsp;000&nbsp;₸ <span class="product_price_sep">/</span> от&nbsp;$550</p>
+            <p class="product_price_note reveal" style="--reveal-delay: 0.15s">Итоговая цена зависит от&nbsp;размера, модели и&nbsp;индивидуальных предпочтений</p>
+            <p class="section_text reveal" style="--reveal-delay: 0.2s">
+              Прочные и&nbsp;тёплые бурки для настоящих северных условий. Натуральные материалы, проверенная конструкция и&nbsp;комфорт в&nbsp;любой мороз.
+            </p>
+
+            <ul class="product_thumbs reveal" style="--reveal-delay: 0.25s" aria-label="Другие фото">
+                <li>
+                  <button class="product_thumb" type="button">
+                    <img src="./img/catalog/men-2.jpg" data-src-light="./img/catalog/men-2-light.jpg" alt="Мужские бурки — вид спереди, другой ракурс" width="853" height="1280" loading="lazy" />
+                  </button>
+                </li>
+                <li>
+                  <button class="product_thumb" type="button">
+                    <img src="./img/catalog/men-3.jpg" data-src-light="./img/catalog/men-3-light.jpg" alt="Мужские бурки — голенища крупным планом" width="1280" height="853" loading="lazy" />
+                  </button>
+                </li>
+                <li>
+                  <button class="product_thumb" type="button">
+                    <img src="./img/catalog/men-4.jpg" data-src-light="./img/catalog/men-4-light.jpg" alt="Мужские бурки — вид сбоку, видна подошва" width="1280" height="853" loading="lazy" />
+                  </button>
+                </li>
+            </ul>
+
+            <button
+              class="btn btn_primary btn_arrow reveal"
+              type="button"
+              style="--reveal-delay: 0.3s"
+              data-open-request
+              data-request-message="Интересуют мужские бурки"
+            >
+              Подробнее
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </article>
+
+        <div class="product_divider" aria-hidden="true">
+          <img src="./img/home-page/icon-snowflake.svg" alt="" width="24" height="24" />
+        </div>
+        <article class="product" id="kids" aria-labelledby="kids_title">
+          <button class="product_zoom reveal" type="button" aria-label="Открыть фото крупно: Светлые детские бурки с вышитым орнаментом">
+            <img class="product_photo" src="./img/catalog/kids-1.jpg" data-src-light="./img/catalog/kids-1-light.jpg" alt="Светлые детские бурки с вышитым орнаментом" width="853" height="1280" />
+          </button>
+
+          <div class="product_content">
+            <p class="section_eyebrow product_eyebrow reveal">Коллекция TAIGA</p>
+            <h2 class="section_title product_title reveal" id="kids_title" style="--reveal-delay: 0.1s">Детские бурки</h2>
+            <p class="product_price reveal" style="--reveal-delay: 0.15s">от&nbsp;12&nbsp;300&nbsp;₽ <span class="product_price_sep">/</span> от&nbsp;70&nbsp;000&nbsp;₸ <span class="product_price_sep">/</span> от&nbsp;$150</p>
+            <p class="product_price_note reveal" style="--reveal-delay: 0.15s">Итоговая цена зависит от&nbsp;размера, модели и&nbsp;индивидуальных предпочтений</p>
+            <p class="section_text reveal" style="--reveal-delay: 0.2s">
+              Лёгкие, тёплые и&nbsp;максимально комфортные бурки для детей. Натуральная оленья шкура бережно сохраняет тепло и&nbsp;позволяет свободно двигаться.
+            </p>
+
+            <ul class="product_thumbs reveal" style="--reveal-delay: 0.25s" aria-label="Другие фото">
+                <li>
+                  <button class="product_thumb" type="button">
+                    <img src="./img/catalog/kids-2.jpg" data-src-light="./img/catalog/kids-2-light.jpg" alt="Детские бурки с пёстрым мехом, вид сбоку" width="1280" height="853" loading="lazy" />
+                  </button>
+                </li>
+                <li>
+                  <button class="product_thumb" type="button">
+                    <img src="./img/catalog/kids-3.jpg" data-src-light="./img/catalog/kids-3-light.jpg" alt="Коричневые детские бурки, вид спереди" width="1280" height="853" loading="lazy" />
+                  </button>
+                </li>
+                <li>
+                  <button class="product_thumb" type="button">
+                    <img src="./img/catalog/kids-4.jpg" data-src-light="./img/catalog/kids-4-light.jpg" alt="Светлые детские бурки с тёмной полосой" width="1280" height="853" loading="lazy" />
+                  </button>
+                </li>
+            </ul>
+
+            <button
+              class="btn btn_primary btn_arrow reveal"
+              type="button"
+              style="--reveal-delay: 0.3s"
+              data-open-request
+              data-request-message="Интересуют детские бурки"
+            >
+              Подробнее
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contacts">
+      <div class="container">
+        <div class="footer_top">
+          <div class="footer_brand">
+            <img
+              class="footer_logo"
+              src="./img/general/logo-header.png"
+              alt="TAIGA"
+              width="270"
+              height="158"
+              loading="lazy"
+            />
+            <p class="footer_tagline">Бурки из оленьей шкуры</p>
+          </div>
+
+          <ul class="footer_contacts">
+            <li>
+              <a class="footer_contact" href="https://www.instagram.com/taiga_burki/" target="_blank" rel="noopener">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" />
+                </svg>
+                <span class="footer_contact_text"><span class="visually_hidden">Instagram: </span>@taiga_burki</span>
+              </a>
+            </li>
+            <li>
+              <a class="footer_contact" href="https://wa.me/77053397249" target="_blank" rel="noopener">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3.5 20.5l1.3-4.1A8.5 8.5 0 1 1 8 19.5l-4.5 1Z" />
+                  <path d="M9 8.3c0 3.4 3.3 6.7 6.7 6.7l1.1-1.4-1.9-1.1-.9.8a4.5 4.5 0 0 1-2.6-2.6l.8-.9-1.1-1.9L9 8.3Z" />
+                </svg>
+                <span class="footer_contact_text"><span class="visually_hidden">WhatsApp: </span>+7 705 339 7249</span>
+              </a>
+            </li>
+            <li>
+              <a class="footer_contact" href="https://t.me/dinarakurmanalieva" target="_blank" rel="noopener">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 4 2.8 11.2l6.4 2.3L11.5 20l3.3-4.2 4.9 3.7L21 4Z" />
+                  <path d="M9.2 13.5 21 4" />
+                </svg>
+                <span class="footer_contact_text"><span class="visually_hidden">Telegram: </span>@dinarakurmanalieva</span>
+              </a>
+            </li>
+            <li>
+              <a class="footer_contact" href="mailto:dinarakurmanalieva@bk.ru">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="5.5" width="18" height="13" rx="2" />
+                  <path d="m3.5 6.5 8.5 6.5 8.5-6.5" />
+                </svg>
+                <span class="footer_contact_text"><span class="visually_hidden">Email: </span>dinarakurmanalieva@bk.ru</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <nav class="footer_nav" aria-label="Навигация в подвале">
+          <ul class="footer_list">
+            <li><a class="footer_link" href="./index.html#about">О бренде</a></li>
+            <li><a class="footer_link" href="./catalog.html" aria-current="page">Каталог</a></li>
+            <li><a class="footer_link" href="./index.html#sewing">Пошив</a></li>
+            <li><a class="footer_link" href="./index.html#delivery">Доставка</a></li>
+            <li><a class="footer_link" href="#contacts">Контакты</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer_bottom">
+          <p>© 2026 TAIGA. Все права защищены.</p>
+          <p>Политика конфиденциальности</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- REQUEST FORM -->
+    <dialog class="request" id="request_dialog" aria-labelledby="request_title">
+      <button class="icon_btn request_close" type="button" aria-label="Закрыть форму" data-close-request>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <form class="request_form" id="request_form" novalidate>
+        <p class="section_eyebrow request_eyebrow">Заявка</p>
+        <h2 class="request_title" id="request_title">Оставить заявку</h2>
+        <p class="request_subtitle">
+          Расскажите, что вас интересует, — мы свяжемся с&nbsp;вами удобным способом.
+        </p>
+
+        <div class="field">
+          <label class="field_label" for="request_name">Как к&nbsp;вам обращаться</label>
+          <input
+            class="field_input"
+            id="request_name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            placeholder="Имя"
+            required
+            minlength="2"
+            maxlength="60"
+            aria-describedby="request_name_error"
+          />
+          <p class="field_error" id="request_name_error" aria-live="polite"></p>
+        </div>
+
+        <fieldset class="field">
+          <legend class="field_label">Как с&nbsp;вами связаться</legend>
+          <div class="contact_methods">
+            <label class="contact_method">
+              <input type="radio" name="method" value="phone" checked />
+              <span>Звонок</span>
+            </label>
+            <label class="contact_method">
+              <input type="radio" name="method" value="telegram" />
+              <span>Telegram</span>
+            </label>
+            <label class="contact_method">
+              <input type="radio" name="method" value="whatsapp" />
+              <span>WhatsApp</span>
+            </label>
+            <label class="contact_method">
+              <input type="radio" name="method" value="email" />
+              <span>Email</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label class="field_label" for="request_contact" id="request_contact_label">Телефон</label>
+          <input
+            class="field_input"
+            id="request_contact"
+            name="contact"
+            type="tel"
+            inputmode="tel"
+            autocomplete="tel"
+            placeholder="+7 900 000-00-00"
+            required
+            aria-describedby="request_contact_error"
+          />
+          <p class="field_error" id="request_contact_error" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label class="field_label" for="request_message">
+            Сообщение <span class="field_optional">— необязательно</span>
+          </label>
+          <textarea
+            class="field_input field_textarea"
+            id="request_message"
+            name="message"
+            rows="3"
+            maxlength="1000"
+            placeholder="Размер, модель, пожелания по пошиву…"
+          ></textarea>
+        </div>
+
+        <button class="btn btn_primary btn_arrow request_submit" type="submit">
+          Отправить заявку
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </form>
+
+      <div class="request_success" id="request_success" hidden>
+        <span class="request_success_icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <h2 class="request_title" id="request_success_title">Спасибо!</h2>
+        <p class="request_subtitle" id="request_success_text">Заявка отправлена. Мы скоро свяжемся с&nbsp;вами.</p>
+        <button class="btn request_done" type="button" data-close-request>Закрыть</button>
+      </div>
+    </dialog>
+    <!-- PHOTO VIEWER -->
+    <dialog class="lightbox" id="photo_dialog" aria-label="Просмотр фото">
+      <img class="lightbox_img" src="" alt="" />
+      <p class="lightbox_counter" aria-live="polite"></p>
+
+      <button class="icon_btn lightbox_close" type="button" aria-label="Закрыть просмотр" data-close-lightbox>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+        </svg>
+      </button>
+      <button class="icon_btn lightbox_nav lightbox_prev" type="button" aria-label="Предыдущее фото">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+      <button class="icon_btn lightbox_nav lightbox_next" type="button" aria-label="Следующее фото">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </dialog>
+  </body>
+</html>
