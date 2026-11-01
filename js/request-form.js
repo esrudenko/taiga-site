@@ -95,7 +95,10 @@ function openRequest(message) {
   requestSuccess.hidden = true;
   requestError.hidden = true;
   requestDialog.showModal();
-  nameInput.focus();
+  requestDialog.scrollTop = 0;
+  if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    nameInput.focus({ preventScroll: true });
+  }
   setScrollLock("request", true);
 }
 

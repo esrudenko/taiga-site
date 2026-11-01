@@ -74,25 +74,12 @@
   box-shadow: 0 0 40px color-mix(in srgb, var(--color-accent) 18%, transparent);
 }
 
-.collection_badge {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 40px;
-  color: var(--color-accent);
-  background: var(--color-bg);
-  border: 2px solid var(--color-accent);
-  border-radius: 0.75rem;
-  transform: translate(-50%, -50%);
-}
 
 .collection_photo {
   width: 100%;
-  aspect-ratio: 853 / 1280;
+  aspect-ratio: 6 / 7;
   object-fit: cover;
+  object-position: center bottom;
   border-radius: 1rem;
 }
 
