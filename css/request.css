@@ -1,7 +1,3 @@
-body.dialog_open {
-  overflow: hidden;
-}
-
 .request {
   position: fixed;
   inset: 0;

@@ -91,9 +91,8 @@
 
 .collection_photo {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 853 / 1280;
   object-fit: cover;
-  object-position: center 62%;
   border-radius: 1rem;
 }
 

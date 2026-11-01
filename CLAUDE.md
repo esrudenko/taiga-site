@@ -36,14 +36,14 @@ css/
   hero.css        home hero
   features.css    icon rows (.features, .features_start)
   about.css       «О бренде»
-  collection.css  «Коллекция TAIGA» on the home page (3 cards → catalog.html#women/#kids/#men, kids card featured with a badge; fur background `--collection-fur`, dark/light)
+  collection.css  «Коллекция TAIGA» on the home page (3 cards → catalog.html#women/#kids/#men, kids card featured with a badge; photos shown whole in their own 853:1280 ratio, never cropped; fur background `--collection-fur`, dark/light)
   split.css       split layout + sewing, delivery
   catalog.css     catalog banner (.page_hero; darker text in the light theme: #6E4424 title/eyebrow, #3F2A1E subtitle) and products
   lightbox.css    photo viewer dialog
   footer.css      footer
   request.css     request form dialog and form fields
 js/
-  theme.js        touchstart (iOS :active), theme toggle, theme photos (`img[data-src-light]`, both pages) — defines themeToggle, isLightTheme, applyThemePhotos
+  theme.js        touchstart (iOS :active), scroll lock (setScrollLock), theme toggle, theme photos (`img[data-src-light]`, both pages) — defines themeToggle, isLightTheme, applyThemePhotos
   menu.js         burger menu + logo link                   — defines setMenuOpen
   reveal.js       scroll reveal
   request-form.js request form (uses setMenuOpen)
@@ -89,6 +89,7 @@ README.md         project description for GitHub + Telegram setup
 - On desktop everything aligns to the container's inner edges; nothing sticks out on wide screens. Full-bleed photos only ≤900px.
 - Vertical rhythm: every section uses `padding: var(--section-space) 0` (`clamp(2.5rem, 5vw, 4rem)`). Exception: `.about` is pulled up into the hero fade (`margin-top: -2.25rem`, `-1rem` ≤1024px, `0` ≤900px).
 - No hard edges between sections: photos dissolve into the page with `mask-image`/gradients.
+- Scroll lock: `setScrollLock(name, on)` in `js/theme.js` (used by the menu, request form and gallery) toggles `html.scroll_locked` (overflow hidden on html and body) and, while locked, cancels `touchmove` outside `.request`/`.header_nav` for iOS. Dialogs and the mobile menu have `overscroll-behavior: contain`. Use it for any new modal instead of body classes.
 - Cursor: one rule in base.css gives `cursor: pointer` to `a[href]`, enabled buttons, labels wrapping radios/checkboxes, `select`, `summary`. Don't set other cursors on clickable things (the gallery photo is `pointer` too, not `zoom-in`); the only exception is the disabled submit button while sending (`progress`).
 - Rounding: buttons, fields, chips, icon buttons — `border-radius: 0.75em`. No pill shapes.
 - Breakpoints: 1200, 1024 (burger menu, footer nav hidden), 900 (sections go one column), 768, 600, 450px; `max-height: 740px` (compact form), `max-height: 560px` (hero `height: auto`).

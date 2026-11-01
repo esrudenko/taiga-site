@@ -303,6 +303,17 @@ h3 {
   transform: translateY(0);
 }
 
+html.scroll_locked,
+html.scroll_locked body {
+  overflow: hidden;
+}
+
+.request,
+.lightbox,
+.header_nav {
+  overscroll-behavior: contain;
+}
+
 main:focus {
   outline: none;
 }

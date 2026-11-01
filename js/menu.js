@@ -6,7 +6,7 @@ function setMenuOpen(isOpen) {
   burgerBtn.setAttribute("aria-expanded", String(isOpen));
   burgerBtn.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
   headerMenu.classList.toggle("active_menu", isOpen);
-  document.body.classList.toggle("menu_open", isOpen);
+  setScrollLock("menu", isOpen);
 }
 
 burgerBtn.addEventListener("click", () => {

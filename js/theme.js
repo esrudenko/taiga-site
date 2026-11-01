@@ -1,5 +1,22 @@
 document.addEventListener("touchstart", () => {}, { passive: true });
 
+const scrollLocks = new Set();
+
+function setScrollLock(name, isLocked) {
+  if (isLocked) scrollLocks.add(name);
+  else scrollLocks.delete(name);
+  document.documentElement.classList.toggle("scroll_locked", scrollLocks.size > 0);
+}
+
+document.addEventListener(
+  "touchmove",
+  (event) => {
+    if (scrollLocks.size && !event.target.closest(".request, .header_nav")) event.preventDefault();
+  },
+  { passive: false },
+);
+
+
 const themeToggle = document.querySelector(".theme_toggle");
 
 function updateThemeLabel() {

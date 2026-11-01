@@ -96,7 +96,7 @@ function openRequest(message) {
   requestError.hidden = true;
   requestDialog.showModal();
   nameInput.focus();
-  document.body.classList.add("dialog_open");
+  setScrollLock("request", true);
 }
 
 function closeRequest() {
@@ -125,7 +125,7 @@ requestDialog.addEventListener("click", (event) => {
 });
 
 requestDialog.addEventListener("close", () => {
-  document.body.classList.remove("dialog_open");
+  setScrollLock("request", false);
 });
 
 requestForm.addEventListener("change", (event) => {

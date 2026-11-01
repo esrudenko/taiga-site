@@ -78,7 +78,7 @@ document.querySelectorAll(".product").forEach((product) => {
     }));
     showLightboxPhoto(active);
     lightbox.showModal();
-    document.body.classList.add("dialog_open");
+    setScrollLock("gallery", true);
   });
 });
 
@@ -97,7 +97,7 @@ lightbox.addEventListener("keydown", (event) => {
 });
 
 lightbox.addEventListener("close", () => {
-  document.body.classList.remove("dialog_open");
+  setScrollLock("gallery", false);
 });
 
 const currencySymbols = { kzt: "₸", rub: "₽", usd: "$" };
