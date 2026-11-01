@@ -8,20 +8,15 @@ RS School project: a website for **TAIGA** — handmade «бурки» (fur boot
 
 ## Status (2026-11-01)
 
-Home page `index.html` is done: header, hero, «О бренде», «Индивидуальный пошив», «Доставка», footer, request form (modal), light/dark theme, burger menu, scroll reveal, touch `:active` states.
-
-Still empty / to do:
-- **Next task: a separate catalog page** (`catalog.html`). Images go to `img/catalog/`.
-- `index.html` still has an empty `<section class="catalog" id="catalog">`, and the header/footer nav «Каталог» and the hero button «Смотреть коллекцию» point to `#catalog`. With a separate page these links should go to `catalog.html` (and the empty section removed or turned into a short teaser — ask the owner).
-- Privacy policy link in the footer is `href="#"` (no page yet).
+- Home page `index.html` is done: header, hero, «О бренде», «Индивидуальный пошив», «Доставка», footer, request form (modal), light/dark theme, burger menu, scroll reveal, touch `:active` states.
+- Catalog page `catalog.html` is done (3 products: women, men, kids) with the owner's photos and prices: all three products are done: **women** (`women-1…4.jpg`, от 150 000 ₸), **men** (`men-1…4.jpg`, от 250 000 ₸), **kids** (`kids-1…4.jpg`, от 70 000 ₸). Owner gives prices in tenge; convert to ₽ and $ at the National Bank of Kazakhstan rate (used: 31.10.2026, 1 $ = 453.87 ₸, 1 ₽ = 5.65 ₸) and round to a neat number (₽ to hundreds, $ to tens). The banner uses `delivery-dark/light.jpg` until there is a dedicated photo (`--catalog-hero-image`).
 - The request form has no backend: submit only shows the success screen (options: Formspree-like service or a Telegram bot with a small server).
 
-### Notes for the catalog page (multi-page)
+### Two pages: how they share code
 
-- Header and footer are plain HTML, so they must be copied into `catalog.html`. On that page nav links to home sections must be `index.html#about`, `index.html#sewing`, etc.; the logo link must go to `index.html` (on the home page it is `href="#"` and `script.js` scrolls to the top).
-- Also copy the inline theme script from `<head>` (applies the saved theme before paint, adds `.js`) and the request `<dialog>` if the page has «Оставить заявку» buttons.
-- `script.js` currently assumes all home-page elements exist (`.theme_toggle`, `.burger_btn`, `#request_dialog`, `.logo_link`, `.features_start`…). Before reusing it on another page, guard each block (`if (element) {…}`) so missing elements don't throw.
-- Reuse existing classes and variables (section headings, `.btn*`, `.field*`, theme variables, `--section-space`, `.reveal`) instead of new one-off styles.
+- Header, footer, request `<dialog>` and the inline theme script in `<head>` are copied in both HTML files; change them in both. `catalog.html` was generated from `index.html`, so the blocks are identical except links.
+- On `catalog.html`: logo → `./index.html`, nav links → `./index.html#about` etc., «Каталог» has `aria-current="page"` (accent color + visible underline), «Контакты» → `#contacts` (this page's footer). On `index.html` «Каталог» and the hero button go to `./catalog.html`.
+- JS: both pages load theme/menu/reveal/request-form; `features.js` only on index, `catalog.js` only on catalog. The logo scrolls to top only when its href is `#`.
 
 ## Stack
 
@@ -30,11 +25,38 @@ Still empty / to do:
 
 ## Files
 
-- `index.html`: header → `<main>` (`#hero`, `#about`, `#catalog` (empty), `#sewing`, `#delivery`) → `<footer id="contacts">` → request `<dialog>`.
-- `style.css` order: variables → reset → general → typography/section headings → buttons → header → hero → features → about → split layout (sewing, delivery) → footer → request form → scroll reveal → hover (`@media (hover: hover)`) → touch active (`@media (hover: none)`) → responsive `@media` blocks → reduced motion.
-- `script.js`: touchstart (iOS :active), theme toggle, burger menu, scroll reveal, request form, logo scroll-to-top, feature rows alignment.
-- `img/general/`: favicon, `logo.png` (original, has a broken tagline line under TAIGA), `logo-header.png` (crop without it — used in header and footer), `taiga-logo.svg` (single-color, not used).
-- `img/home-page/`: section photos in dark/light pairs (`hero-bg(-light)`, `about-deer-dark/light`, `sewing-dark/light`, `delivery-dark/light`), `footer-mountains.jpg`, feature icons `icon-*.svg` (stroke `#C99A70`).
+```
+index.html, catalog.html      pages (header/footer/request dialog are copied in both)
+css/
+  variables.css   :root (dark) and :root.light_theme colors, fonts, sizes, theme photo variables
+  base.css        reset, body, .container, section headings/text, .btn*, .reveal, .visually_hidden, reduced motion
+  header.css      header, nav (+ shared link underline hover), theme toggle, .icon_btn, burger and mobile menu
+  hero.css        home hero
+  features.css    icon rows (.features, .features_start)
+  about.css       «О бренде»
+  split.css       split layout + sewing, delivery
+  catalog.css     catalog banner (.page_hero; darker text in the light theme: #6E4424 title/eyebrow, #3F2A1E subtitle) and products
+  lightbox.css    photo viewer dialog
+  footer.css      footer
+  request.css     request form dialog and form fields
+js/
+  theme.js        touchstart (iOS :active) + theme toggle  — defines themeToggle
+  menu.js         burger menu + logo link                   — defines setMenuOpen
+  reveal.js       scroll reveal
+  request-form.js request form (uses setMenuOpen)
+  features.js     feature rows alignment (index only)
+  catalog.js      theme photos, gallery, photo viewer (catalog only; uses themeToggle)
+img/general/      favicon, logos
+img/home-page/    home photos (dark/light pairs), footer mountains, icon-*.svg
+img/catalog/      <model>-1…4.jpg and <model>-1…4-light.jpg
+```
+
+- Each component file holds its own `@media` (breakpoints, `hover: hover`, `hover: none`) blocks at the end.
+- index.html links: variables, base, header, hero, features, about, split, footer, request. catalog.html: variables, base, header, catalog, lightbox, footer, request. Keep this order (variables → base → components).
+- Scripts are classic `defer` scripts sharing the global scope, loaded in order theme → menu → reveal → request-form → features/catalog. Top-level names must stay unique across files. Not ES modules, so the site still opens via `file://`.
+- Image paths inside CSS are relative to the CSS file: `url("../img/...")`.
+- No explanatory comments in code (owner's request); HTML keeps only short section markers like `<!-- HERO -->`. Explanations live in this file.
+- Image weight: export images at most ~2× their largest displayed size (favicon 64px, `logo-header.png` 600px wide). Photos are ≤1280px JPG.
 
 ## Conventions
 
@@ -71,11 +93,13 @@ Still empty / to do:
 - Buttons: `.btn` (accent outline), `.btn_primary` (filled), `.btn_ghost` (quiet secondary), `.btn_arrow` (arrow slides right on hover). `.icon_btn` — 44×44 square (theme toggle, burger, form close).
 - Hover only inside `@media (hover: hover)`; each hover has a matching `:active` in `@media (hover: none)` with `transition-duration: 0s` on the pressed state.
 - Hero: header + hero = exactly one screen (`height: calc(100svh - var(--header-height))`), `vh`-based `clamp()` spacing; CSS load animation (no `.reveal` inside the hero).
-- Features: `.features > .feature > .feature_icon + .feature_text`, `--feature-count` columns, no dividers. `.features_start` = equal blocks as wide as the widest caption, row starts at the text edge; `alignFeatureRows()` in `script.js` shifts the row so the first block's content starts exactly at the text edge (`data-align="desktop"` = only >900px). Captions are broken into 2 lines with `<br />` where needed.
+- Features: `.features > .feature > .feature_icon + .feature_text`, `--feature-count` columns, no dividers. `.features_start` = equal blocks as wide as the widest caption, row starts at the text edge; `alignFeatureRows()` in `js/` shifts the row so the first block's content starts exactly at the text edge (`data-align="desktop"` = only >900px). Captions are broken into 2 lines with `<br />` where needed.
 - About: photo left, text right; ≤900px photo on top, centered text.
 - Split layout (sewing, delivery): `.container.split` with `.split_content` (left) and `.split_image` (right, `--split-image`). Photo is first in HTML so ≤900px it's on top, text centered.
-- Footer: logo + accent tagline `.footer_tagline`, vertical line, contacts in order Instagram, WhatsApp, Telegram, email (real links: `instagram.com/taiga_burki`, `wa.me/77053397249`, `t.me/dinarakurmanalieva`, `mailto:dinarakurmanalieva@bk.ru`), mountains photo, nav row between lines, `.footer_bottom` (copyright © 2026 + privacy link).
+- Footer: logo + accent tagline `.footer_tagline`, vertical line, contacts in order Instagram, WhatsApp, Telegram, email (real links: `instagram.com/taiga_burki`, `wa.me/77053397249`, `t.me/dinarakurmanalieva`, `mailto:dinarakurmanalieva@bk.ru`), mountains photo, nav row between lines, `.footer_bottom` (copyright © 2026 + «Политика конфиденциальности» as plain text, no link or hover — by the owner's request).
 - Request form: native `<dialog id="request_dialog">`; `data-open-request` opens, `data-close-request` closes (also Escape, backdrop click). Fields: name, contact method chips (phone/Telegram/WhatsApp/email change the contact field — see `contactMethods`), optional message. Custom validation (`.field.has_error`, `.field_error`). Fits the screen without scrolling; bottom sheet ≤450px. Focus goes to the name field via JS (not `autofocus`, Chrome blocks it with a `#hash` in the URL). Field classes `.field*` are reusable.
+- Products (catalog): `.product` grid — `.product_photo` (big `<img>`, 4:5 so upright pair photos fit; wide photos are cropped by `object-fit: cover`) + `.product_content` (eyebrow «Коллекция TAIGA» with a line only after it, `.section_title`, `.product_price` «от … ₽ / от … ₸ / от $…» with `.product_price_note` «Итоговая цена зависит от размера, модели и индивидуальных предпочтений» under it, `.section_text`, `.product_thumbs` with 3 square `<button class="product_thumb">`, button «Подробнее»). Every even product has the photo on the right. Each product fits one screen under the header without cropping the main photo: `.product_photo` is always 4:5 and its width is `min(half the container, (100svh − header − 3rem) × 0.8)`, so on low screens it gets narrower instead of being cropped (grid columns `auto minmax(0, 1fr)`, mirrored for even products). Two columns are kept down to 601px; ≤600px one column, centered, the `.product_zoom` button gets width `min(100%, 45svh × 0.8)` and is centered (the img inside is `width: 100%`) (a whole product can't fit a phone screen). Clicking a thumb swaps its `src`/`alt` with the big photo. The big photo is wrapped in `<button class="product_zoom">` (it is the grid item); a click opens the photo viewer `<dialog id="photo_dialog" class="lightbox">` (only in `catalog.html`): whole photo with `object-fit: contain`, counter «1 / 4», prev/next buttons and ← → keys go through the product's 4 photos (big one first, then thumbs in their current order), closes on ×, Escape or a click on the dark area. Follows the theme: colors from theme variables; the `::backdrop` color is set separately for `.light_theme` (variables don't reliably reach `::backdrop`). «Подробнее» has `data-open-request data-request-message="Интересуют … бурки"` — opens the request form with the message pre-filled. Prices: write «от» before each, glue with `&nbsp;` (`от&nbsp;24&nbsp;900&nbsp;₽`). Photo files go to `img/catalog/` as `<model>-1…4.jpg` (1 = main, dark background) plus `<model>-1…4-light.jpg` (same shot on a light background) for the light theme. Each product `<img>` has `src` = dark photo and `data-src-light` = light one; `applyThemePhotos()` in `js/` switches them on load and on theme toggle, and the gallery swaps both versions (`data-src-dark`/`data-src-light`) when a thumb is clicked, ≤1600px; give each `<img>` a descriptive `alt` and its real width/height.
+- Global `img { height: auto }`: width/height attributes reserve space, CSS keeps proportions (needed for `aspect-ratio`).
 - Scroll reveal: class `reveal` + optional `style="--reveal-delay: 0.1s"`; IntersectionObserver adds `.is_visible` once; content hidden only under `.js`.
 
 ## Checking changes

@@ -1,0 +1,60 @@
+:root {
+  --color-bg: #0E0D0B;
+  --color-surface: #1B1714;
+  --color-surface-alt: #352217;
+  --color-text: #FAF7F2;
+  --color-text-muted: #C6B7A8;
+  --color-accent: #C99A70;
+  --color-button-bg: #C99A70;
+  --color-button-border: #C99A70;
+  --color-button-text: #0E0D0B;
+  --color-border: #49372B;
+  --font-main: "Manrope", sans-serif;
+  --font-title: "Prata", serif;
+  --font-accent: "Cormorant Garamond", serif;
+  --color-accent-hover: #DDB28A;
+  --hero-image: url("../img/home-page/hero-bg.jpg");
+  --about-image: url("../img/home-page/about-deer-dark.jpg");
+  --sewing-image: url("../img/home-page/sewing-dark.jpg");
+  --delivery-image: url("../img/home-page/delivery-dark.jpg");
+  --catalog-hero-image: url("../img/home-page/delivery-dark.jpg");
+  --hero-overlay: 14, 13, 11; 
+  --color-hero-bg: #0E0D0B;
+  --color-hero-text: #FAF7F2;
+  --color-hero-muted: #D9CCBF;
+  --color-hero-accent: #C99A70;
+  --color-hero-accent-hover: #DDB28A;
+  --color-hero-on-accent: #0E0D0B;
+  --color-hero-line: rgba(201, 154, 112, 0.45);
+  --header-height: 92px;
+  --container-padding: 2.5rem;
+  --section-space: clamp(2.5rem, 5vw, 4rem);
+  --transition: 0.3s ease;
+}
+
+:root.light_theme {
+  --color-bg: #FAF7F2;
+  --color-surface: #FFFDF9;
+  --color-surface-alt: #E8D8C8;
+  --color-text: #352217;
+  --color-text-muted: #6B5A4D;
+  --color-accent: #8A5A32;
+  --color-accent-hover: #74481F;
+  --color-button-bg: #352217;
+  --color-button-border: rgba(138, 90, 50, 0.4); 
+  --color-button-text: #FFFDF9;
+  --color-border: #E8D8C8;
+  --hero-image: url("../img/home-page/hero-bg-light.jpg");
+  --about-image: url("../img/home-page/about-deer-light.jpg");
+  --sewing-image: url("../img/home-page/sewing-light.jpg");
+  --delivery-image: url("../img/home-page/delivery-light.jpg");
+  --catalog-hero-image: url("../img/home-page/delivery-light.jpg");
+  --hero-overlay: 250, 247, 242;
+  --color-hero-bg: #FAF7F2;
+  --color-hero-text: #352217;
+  --color-hero-muted: #5E4D41;
+  --color-hero-accent: #8A5A32;
+  --color-hero-accent-hover: #74481F;
+  --color-hero-on-accent: #FAF7F2;
+  --color-hero-line: rgba(138, 90, 50, 0.4);
+}

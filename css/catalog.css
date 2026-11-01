@@ -1,0 +1,221 @@
+.page_hero {
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--hero-overlay), 0.55) 0%,
+      rgba(var(--hero-overlay), 0.7) 60%,
+      rgba(var(--hero-overlay), 1) 100%
+    ),
+    var(--catalog-hero-image) center 30% / cover no-repeat,
+    var(--color-bg);
+}
+
+.page_hero .section_eyebrow {
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.light_theme .page_hero .section_eyebrow,
+.light_theme .page_title {
+  color: #6E4424;
+}
+
+.light_theme .page_subtitle {
+  color: #3F2A1E;
+}
+
+.page_title {
+  margin-bottom: 1rem;
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  line-height: 110%;
+  color: var(--color-accent);
+}
+
+.page_subtitle {
+  font-family: var(--font-accent);
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-style: italic;
+  line-height: 140%;
+  color: var(--color-text-muted);
+}
+
+.catalog {
+  padding: var(--section-space) 0;
+}
+
+.product {
+  --product-gap: clamp(1.5rem, 4vw, 3.5rem);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--product-gap);
+}
+
+.product:nth-of-type(even) {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.product:nth-of-type(even) .product_zoom {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.product_zoom {
+  display: block;
+  cursor: zoom-in;
+  border-radius: 0.75rem;
+}
+
+.product:nth-of-type(even) .product_content {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.product_photo {
+  transition: border-color var(--transition);
+  width: min(
+    calc((min(100vw, 1440px) - 2 * var(--container-padding) - var(--product-gap)) / 2),
+    calc((100svh - var(--header-height) - 3rem) * 0.8)
+  );
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+}
+
+.product_content {
+  max-width: 560px;
+}
+
+.product_eyebrow::before {
+  display: none; 
+}
+
+.product_title {
+  margin-bottom: 1rem;
+}
+
+.product_price {
+  margin-bottom: 0.25rem;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.product_price_note {
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.product_price_sep {
+  margin: 0 0.25em;
+  font-weight: 400;
+  color: var(--color-accent);
+}
+
+.product_thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.product_thumb {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  transition: border-color var(--transition);
+}
+
+.product_thumb img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product_divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: clamp(2.5rem, 5vw, 4rem) 0;
+}
+
+.product_divider::before,
+.product_divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-button-border);
+}
+
+.light_theme .product_divider img {
+  filter: brightness(0.62) saturate(1.3);
+}
+
+@media (hover: hover) {
+  .product_zoom:hover .product_photo {
+    border-color: var(--color-accent);
+  }
+
+  .product_thumb:hover {
+    border-color: var(--color-accent);
+  }
+
+  .product_thumb:hover img {
+    transform: scale(1.06);
+  }
+}
+
+@media (hover: none) {
+  .product_thumb:active {
+    border-color: var(--color-accent);
+    transition-duration: 0s;
+  }
+}
+
+@media (max-width: 600px) {
+  .product,
+  .product:nth-of-type(even) {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .product:nth-of-type(even) .product_zoom,
+  .product:nth-of-type(even) .product_content {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .product_zoom {
+    justify-self: center;
+    width: min(100%, calc(45svh * 0.8));
+  }
+
+  .product_photo {
+    width: 100%;
+  }
+
+  .product_content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .product_eyebrow {
+    justify-content: center;
+  }
+
+  .product_eyebrow::before {
+    display: block;
+  }
+
+  .product .section_text {
+    margin-inline: auto;
+  }
+}
