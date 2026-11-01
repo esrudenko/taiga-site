@@ -8,9 +8,11 @@ RS School project: a website for **TAIGA** — handmade «бурки» (fur boot
 
 ## Status (2026-11-01)
 
-- Home page `index.html` is done: header, hero, «О бренде», «Индивидуальный пошив», «Доставка», footer, request form (modal), light/dark theme, burger menu, scroll reveal, touch `:active` states.
-- Catalog page `catalog.html` is done (3 products: women, men, kids) with the owner's photos and prices: all three products are done: **women** (`women-1…4.jpg`, от 150 000 ₸), **men** (`men-1…4.jpg`, от 250 000 ₸), **kids** (`kids-1…4.jpg`, от 70 000 ₸). Owner gives prices in tenge; convert to ₽ and $ at the National Bank of Kazakhstan rate (used: 31.10.2026, 1 $ = 453.87 ₸, 1 ₽ = 5.65 ₸) and round to a neat number (₽ to hundreds, $ to tens). The banner uses `delivery-dark/light.jpg` until there is a dedicated photo (`--catalog-hero-image`).
-- The request form has no backend: submit only shows the success screen (options: Formspree-like service or a Telegram bot with a small server).
+- Home `index.html` and catalog `catalog.html` are done. Deployed from the `gh-pages` branch: https://esrudenko.github.io/taiga-site/ (owner merges PRs `main` → `gh-pages` in the GitHub UI; `gh` CLI is not installed).
+- **Waiting for the owner:**
+  - Request form endpoint: `REQUEST_ENDPOINT` in `js/request-form.js` is empty until the owner deploys `server/telegram-worker.js` (Cloudflare Worker, steps in README.md). With no endpoint or a failed request the form shows `#request_error` (WhatsApp fallback) — success is shown only after the server answers `{ ok: true }`.
+- Delivery timelines (`.delivery_terms` in `#delivery`, from the owner): production 14 days, delivery from 10 days; note «Сроки ориентировочные и зависят от выбранной модели и транспортной компании».
+- Prices (from the owner, in tenge; ₽/$ converted at NB RK rate 31.10.2026: 1 $ = 453.87 ₸, 1 ₽ = 5.65 ₸, rounded down): women 150 000 ₸ / 26 500 ₽ / $330, men 250 000 ₸ / 44 200 ₽ / $550, kids 70 000 ₸ / 12 300 ₽ / $150.
 
 ### Two pages: how they share code
 
@@ -34,29 +36,32 @@ css/
   hero.css        home hero
   features.css    icon rows (.features, .features_start)
   about.css       «О бренде»
+  collection.css  «Коллекция TAIGA» on the home page (3 cards → catalog.html#women/#kids/#men, kids card featured with a badge; fur background `--collection-fur`, dark/light)
   split.css       split layout + sewing, delivery
   catalog.css     catalog banner (.page_hero; darker text in the light theme: #6E4424 title/eyebrow, #3F2A1E subtitle) and products
   lightbox.css    photo viewer dialog
   footer.css      footer
   request.css     request form dialog and form fields
 js/
-  theme.js        touchstart (iOS :active) + theme toggle  — defines themeToggle
+  theme.js        touchstart (iOS :active), theme toggle, theme photos (`img[data-src-light]`, both pages) — defines themeToggle, isLightTheme, applyThemePhotos
   menu.js         burger menu + logo link                   — defines setMenuOpen
   reveal.js       scroll reveal
   request-form.js request form (uses setMenuOpen)
   features.js     feature rows alignment (index only)
-  catalog.js      theme photos, gallery, photo viewer (catalog only; uses themeToggle)
+  catalog.js      theme photos, thumbnails, swipe, gallery, currency switch (catalog only; uses themeToggle)
 img/general/      favicon, logos
 img/home-page/    home photos (dark/light pairs), footer mountains, icon-*.svg
-img/catalog/      <model>-1…4.jpg and <model>-1…4-light.jpg
+img/catalog/      <model>-1…4.webp and <model>-1…4-light.webp
+server/           telegram-worker.js (Cloudflare Worker for the request form)
+README.md         project description for GitHub + Telegram setup
 ```
 
 - Each component file holds its own `@media` (breakpoints, `hover: hover`, `hover: none`) blocks at the end.
-- index.html links: variables, base, header, hero, features, about, split, footer, request. catalog.html: variables, base, header, catalog, lightbox, footer, request. Keep this order (variables → base → components).
+- index.html links: variables, base, header, hero, features, about, collection, split, footer, request. catalog.html: variables, base, header, catalog, lightbox, footer, request. Keep this order (variables → base → components).
 - Scripts are classic `defer` scripts sharing the global scope, loaded in order theme → menu → reveal → request-form → features/catalog. Top-level names must stay unique across files. Not ES modules, so the site still opens via `file://`.
 - Image paths inside CSS are relative to the CSS file: `url("../img/...")`.
 - No explanatory comments in code (owner's request); HTML keeps only short section markers like `<!-- HERO -->`. Explanations live in this file.
-- Image weight: export images at most ~2× their largest displayed size (favicon 64px, `logo-header.png` 600px wide). Photos are ≤1280px JPG.
+- Images: WebP (encoded with headless Chrome canvas, quality 0.72–0.82; `sips` can't write WebP), ≤1280px, at most ~2× display size. Below-the-fold `<img>` get `loading="lazy" decoding="async"`. `img/general/og-image.jpg` (1200×630) is the Open Graph preview; favicon stays PNG.
 
 ## Conventions
 
@@ -84,6 +89,7 @@ img/catalog/      <model>-1…4.jpg and <model>-1…4-light.jpg
 - On desktop everything aligns to the container's inner edges; nothing sticks out on wide screens. Full-bleed photos only ≤900px.
 - Vertical rhythm: every section uses `padding: var(--section-space) 0` (`clamp(2.5rem, 5vw, 4rem)`). Exception: `.about` is pulled up into the hero fade (`margin-top: -2.25rem`, `-1rem` ≤1024px, `0` ≤900px).
 - No hard edges between sections: photos dissolve into the page with `mask-image`/gradients.
+- Cursor: one rule in base.css gives `cursor: pointer` to `a[href]`, enabled buttons, labels wrapping radios/checkboxes, `select`, `summary`. Don't set other cursors on clickable things (the gallery photo is `pointer` too, not `zoom-in`); the only exception is the disabled submit button while sending (`progress`).
 - Rounding: buttons, fields, chips, icon buttons — `border-radius: 0.75em`. No pill shapes.
 - Breakpoints: 1200, 1024 (burger menu, footer nav hidden), 900 (sections go one column), 768, 600, 450px; `max-height: 740px` (compact form), `max-height: 560px` (hero `height: auto`).
 
@@ -96,11 +102,18 @@ img/catalog/      <model>-1…4.jpg and <model>-1…4-light.jpg
 - Features: `.features > .feature > .feature_icon + .feature_text`, `--feature-count` columns, no dividers. `.features_start` = equal blocks as wide as the widest caption, row starts at the text edge; `alignFeatureRows()` in `js/` shifts the row so the first block's content starts exactly at the text edge (`data-align="desktop"` = only >900px). Captions are broken into 2 lines with `<br />` where needed.
 - About: photo left, text right; ≤900px photo on top, centered text.
 - Split layout (sewing, delivery): `.container.split` with `.split_content` (left) and `.split_image` (right, `--split-image`). Photo is first in HTML so ≤900px it's on top, text centered.
-- Footer: logo + accent tagline `.footer_tagline`, vertical line, contacts in order Instagram, WhatsApp, Telegram, email (real links: `instagram.com/taiga_burki`, `wa.me/77053397249`, `t.me/dinarakurmanalieva`, `mailto:dinarakurmanalieva@bk.ru`), mountains photo, nav row between lines, `.footer_bottom` (copyright © 2026 + «Политика конфиденциальности» as plain text, no link or hover — by the owner's request).
+- Footer: logo + accent tagline `.footer_tagline`, vertical line, contacts in order Instagram, WhatsApp, Telegram, email (real links: `instagram.com/taiga_burki`, `wa.me/77053397249`, `t.me/dinarakurmanalieva`, `mailto:dinarakurmanalieva@bk.ru`), mountains photo, nav row between lines, `.footer_bottom` (copyright © 2026 only; no privacy policy — owner's request).
 - Request form: native `<dialog id="request_dialog">`; `data-open-request` opens, `data-close-request` closes (also Escape, backdrop click). Fields: name, contact method chips (phone/Telegram/WhatsApp/email change the contact field — see `contactMethods`), optional message. Custom validation (`.field.has_error`, `.field_error`). Fits the screen without scrolling; bottom sheet ≤450px. Focus goes to the name field via JS (not `autofocus`, Chrome blocks it with a `#hash` in the URL). Field classes `.field*` are reusable.
-- Products (catalog): `.product` grid — `.product_photo` (big `<img>`, 4:5 so upright pair photos fit; wide photos are cropped by `object-fit: cover`) + `.product_content` (eyebrow «Коллекция TAIGA» with a line only after it, `.section_title`, `.product_price` «от … ₽ / от … ₸ / от $…» with `.product_price_note` «Итоговая цена зависит от размера, модели и индивидуальных предпочтений» under it, `.section_text`, `.product_thumbs` with 3 square `<button class="product_thumb">`, button «Подробнее»). Every even product has the photo on the right. Each product fits one screen under the header without cropping the main photo: `.product_photo` is always 4:5 and its width is `min(half the container, (100svh − header − 3rem) × 0.8)`, so on low screens it gets narrower instead of being cropped (grid columns `auto minmax(0, 1fr)`, mirrored for even products). Two columns are kept down to 601px; ≤600px one column, centered, the `.product_zoom` button gets width `min(100%, 45svh × 0.8)` and is centered (the img inside is `width: 100%`) (a whole product can't fit a phone screen). Clicking a thumb swaps its `src`/`alt` with the big photo. The big photo is wrapped in `<button class="product_zoom">` (it is the grid item); a click opens the photo viewer `<dialog id="photo_dialog" class="lightbox">` (only in `catalog.html`): whole photo with `object-fit: contain`, counter «1 / 4», prev/next buttons and ← → keys go through the product's 4 photos (big one first, then thumbs in their current order), closes on ×, Escape or a click on the dark area. Follows the theme: colors from theme variables; the `::backdrop` color is set separately for `.light_theme` (variables don't reliably reach `::backdrop`). «Подробнее» has `data-open-request data-request-message="Интересуют … бурки"` — opens the request form with the message pre-filled. Prices: write «от» before each, glue with `&nbsp;` (`от&nbsp;24&nbsp;900&nbsp;₽`). Photo files go to `img/catalog/` as `<model>-1…4.jpg` (1 = main, dark background) plus `<model>-1…4-light.jpg` (same shot on a light background) for the light theme. Each product `<img>` has `src` = dark photo and `data-src-light` = light one; `applyThemePhotos()` in `js/` switches them on load and on theme toggle, and the gallery swaps both versions (`data-src-dark`/`data-src-light`) when a thumb is clicked, ≤1600px; give each `<img>` a descriptive `alt` and its real width/height.
+- Products (catalog): `.product` grid — `.product_zoom` button with the big `.product_photo` (always 4:5, never cropped; sized by screen height) + `.product_content`: eyebrow, `.section_title`, `.product_price_row` (`.product_price` with `data-price-kzt/rub/usd` + `.currency` radio switch ₸/₽/$; default ₸, choice synced across products and saved in `localStorage.currency`; the price has a fixed `min-width: 6.4em` + `tabular-nums` so the switch doesn't jump — widest price is «от 250 000 ₸» ≈ 6.02em, raise the min-width if longer prices appear), `.product_price_note`, text, `.product_thumbs` with 4 `<button class="product_thumb" aria-pressed data-photo data-photo-light>` (all photos incl. the main one; a click selects the big photo), «Заказать» button (`data-open-request` + `data-request-message`). Touch swipe on the big photo switches photos; a tap opens the full-screen gallery `#photo_dialog` at the current photo (swipe / ← → / buttons, Escape closes). Even products have the photo on the right; ≤600px one column, centered.
+- How to measure (`#measure` on catalog): two `.measure_card`s with inline SVG diagrams (foot length, calf girth; colors from theme variables via classes `.measure_shape/.measure_line/.measure_guide`) and a «Отправить мерки» button that pre-fills the form message.
 - Global `img { height: auto }`: width/height attributes reserve space, CSS keeps proportions (needed for `aspect-ratio`).
 - Scroll reveal: class `reveal` + optional `style="--reveal-delay: 0.1s"`; IntersectionObserver adds `.is_visible` once; content hidden only under `.js`.
+
+## SEO and accessibility
+
+- Each page has its own `<title>`, `meta description`, `canonical`, Open Graph/Twitter tags (absolute URLs to the GitHub Pages site).
+- Skip link `.skip_link` «Перейти к содержанию» → `<main id="main" tabindex="-1">`. Icon buttons have `aria-label`, thumbs use `aria-pressed`, currency is a `fieldset` of radios, dialogs are native `<dialog>` (Escape closes).
+- Checked: no horizontal scroll at 320/375/768/1024px on both pages; the request form fits the screen.
 
 ## Checking changes
 

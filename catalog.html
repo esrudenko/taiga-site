@@ -3,7 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Каталог — TAIGA</title>
+    <title>Каталог бурок — женские, мужские и детские | TAIGA</title>
+    <meta name="description" content="Женские, мужские и детские бурки TAIGA из оленьей шкуры: фото, цены от 70 000 ₸, инструкция, как снять мерки, и заказ онлайн." />
+    <link rel="canonical" href="https://esrudenko.github.io/taiga-site/catalog.html" />
+    <meta name="theme-color" content="#0E0D0B" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="TAIGA" />
+    <meta property="og:title" content="Каталог бурок — женские, мужские и детские | TAIGA" />
+    <meta property="og:description" content="Женские, мужские и детские бурки TAIGA из оленьей шкуры: фото, цены от 70 000 ₸, инструкция, как снять мерки, и заказ онлайн." />
+    <meta property="og:url" content="https://esrudenko.github.io/taiga-site/catalog.html" />
+    <meta property="og:image" content="https://esrudenko.github.io/taiga-site/img/general/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="./img/general/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,13 +44,15 @@
     <script src="./js/catalog.js" defer></script>
   </head>
   <body>
+    <a class="skip_link" href="#main">Перейти к&nbsp;содержанию</a>
+
     <!-- HEADER -->
     <header class="header">
       <div class="container header_container">
         <a class="logo_link" href="./index.html" aria-label="Taiga — на главную">
           <img
             class="logo_img"
-            src="./img/general/logo-header.png"
+            src="./img/general/logo-header.webp"
             alt=""
             width="120"
             height="70"
@@ -108,7 +123,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main" tabindex="-1">
       <!-- PAGE HERO -->
       <section class="page_hero">
         <div class="container page_hero_content">
@@ -124,35 +139,90 @@
       <section class="catalog" aria-label="Модели бурок">
         <div class="container">
         <article class="product" id="women" aria-labelledby="women_title">
-          <button class="product_zoom reveal" type="button" aria-label="Открыть фото крупно: Тёмные женские бурки с красной вышивкой">
-            <img class="product_photo" src="./img/catalog/women-1.jpg" data-src-light="./img/catalog/women-1-light.jpg" alt="Тёмные женские бурки с красной вышивкой" width="853" height="1280" />
+          <button class="product_zoom reveal" type="button" aria-label="Открыть галерею: женские бурки">
+            <img
+              class="product_photo"
+              src="./img/catalog/women-1.webp"
+              data-src-light="./img/catalog/women-1-light.webp"
+              alt="Тёмные женские бурки с красной вышивкой"
+              width="853"
+              height="1280"
+              decoding="async"
+            />
           </button>
 
           <div class="product_content">
             <p class="section_eyebrow product_eyebrow reveal">Коллекция TAIGA</p>
             <h2 class="section_title product_title reveal" id="women_title" style="--reveal-delay: 0.1s">Женские бурки</h2>
-            <p class="product_price reveal" style="--reveal-delay: 0.15s">от&nbsp;26&nbsp;500&nbsp;₽ <span class="product_price_sep">/</span> от&nbsp;150&nbsp;000&nbsp;₸ <span class="product_price_sep">/</span> от&nbsp;$330</p>
+
+            <div class="product_price_row reveal" style="--reveal-delay: 0.15s">
+              <p class="product_price" data-price-kzt="150000" data-price-rub="26500" data-price-usd="330">от&nbsp;150&nbsp;000&nbsp;₸</p>
+              <fieldset class="currency">
+                <legend class="visually_hidden">Валюта цены</legend>
+                <label class="currency_option">
+                  <input type="radio" name="currency_women" value="kzt" checked />
+                  <span>₸</span>
+                </label>
+                <label class="currency_option">
+                  <input type="radio" name="currency_women" value="rub" />
+                  <span>₽</span>
+                </label>
+                <label class="currency_option">
+                  <input type="radio" name="currency_women" value="usd" />
+                  <span>$</span>
+                </label>
+              </fieldset>
+            </div>
             <p class="product_price_note reveal" style="--reveal-delay: 0.15s">Итоговая цена зависит от&nbsp;размера, модели и&nbsp;индивидуальных предпочтений</p>
             <p class="section_text reveal" style="--reveal-delay: 0.2s">
               Элегантные и&nbsp;тёплые бурки из&nbsp;натуральной оленьей шкуры для холодного климата. Комфорт, надёжность и&nbsp;природная красота в&nbsp;каждой паре.
             </p>
 
-            <ul class="product_thumbs reveal" style="--reveal-delay: 0.25s" aria-label="Другие фото">
-                <li>
-                  <button class="product_thumb" type="button">
-                    <img src="./img/catalog/women-2.jpg" data-src-light="./img/catalog/women-2-light.jpg" alt="Женские бурки с красным орнаментом, вид спереди" width="853" height="1280" loading="lazy" />
-                  </button>
-                </li>
-                <li>
-                  <button class="product_thumb" type="button">
-                    <img src="./img/catalog/women-3.jpg" data-src-light="./img/catalog/women-3-light.jpg" alt="Светлые женские бурки с вышивкой, голенища крупным планом" width="1280" height="853" loading="lazy" />
-                  </button>
-                </li>
-                <li>
-                  <button class="product_thumb" type="button">
-                    <img src="./img/catalog/women-4.jpg" data-src-light="./img/catalog/women-4-light.jpg" alt="Вышитый орнамент на меху крупным планом" width="853" height="1280" loading="lazy" />
-                  </button>
-                </li>
+            <ul class="product_thumbs reveal" style="--reveal-delay: 0.25s" aria-label="Фото модели">
+              <li>
+                <button
+                  class="product_thumb"
+                  type="button"
+                  aria-pressed="true"
+                  data-photo="./img/catalog/women-1.webp"
+                  data-photo-light="./img/catalog/women-1-light.webp"
+                >
+                  <img src="./img/catalog/women-1.webp" data-src-light="./img/catalog/women-1-light.webp" alt="Тёмные женские бурки с красной вышивкой" width="853" height="1280" loading="lazy" decoding="async" />
+                </button>
+              </li>
+              <li>
+                <button
+                  class="product_thumb"
+                  type="button"
+                  aria-pressed="false"
+                  data-photo="./img/catalog/women-2.webp"
+                  data-photo-light="./img/catalog/women-2-light.webp"
+                >
+                  <img src="./img/catalog/women-2.webp" data-src-light="./img/catalog/women-2-light.webp" alt="Женские бурки с красным орнаментом, вид спереди" width="853" height="1280" loading="lazy" decoding="async" />
+                </button>
+              </li>
+              <li>
+                <button
+                  class="product_thumb"
+                  type="button"
+                  aria-pressed="false"
+                  data-photo="./img/catalog/women-3.webp"
+                  data-photo-light="./img/catalog/women-3-light.webp"
+                >
+                  <img src="./img/catalog/women-3.webp" data-src-light="./img/catalog/women-3-light.webp" alt="Светлые женские бурки с вышивкой, голенища крупным планом" width="1280" height="853" loading="lazy" decoding="async" />
+                </button>
+              </li>
+              <li>
+                <button
+                  class="product_thumb"
+                  type="button"
+                  aria-pressed="false"
+                  data-photo="./img/catalog/women-4.webp"
+                  data-photo-light="./img/catalog/women-4-light.webp"
+                >
+                  <img src="./img/catalog/women-4.webp" data-src-light="./img/catalog/women-4-light.webp" alt="Вышитый орнамент на меху крупным планом" width="853" height="1280" loading="lazy" decoding="async" />
+                </button>
+              </li>
             </ul>
 
             <button
@@ -162,7 +232,7 @@
               data-open-request
               data-request-message="Интересуют женские бурки"
             >
-              Подробнее
+              Заказать
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
@@ -174,35 +244,90 @@
           <img src="./img/home-page/icon-snowflake.svg" alt="" width="24" height="24" />
         </div>
         <article class="product" id="men" aria-labelledby="men_title">
-          <button class="product_zoom reveal" type="button" aria-label="Открыть фото крупно: Мужские бурки из оленьей шкуры — пара, вид спереди">
-            <img class="product_photo" src="./img/catalog/men-1.jpg" data-src-light="./img/catalog/men-1-light.jpg" alt="Мужские бурки из оленьей шкуры — пара, вид спереди" width="853" height="1280" />
+          <button class="product_zoom reveal" type="button" aria-label="Открыть галерею: мужские бурки">
+            <img
+              class="product_photo"
+              src="./img/catalog/men-1.webp"
+              data-src-light="./img/catalog/men-1-light.webp"
+              alt="Мужские бурки из оленьей шкуры — пара, вид спереди"
+              width="853"
+              height="1280"
+              decoding="async" loading="lazy"
+            />
           </button>
 
           <div class="product_content">
             <p class="section_eyebrow product_eyebrow reveal">Коллекция TAIGA</p>
             <h2 class="section_title product_title reveal" id="men_title" style="--reveal-delay: 0.1s">Мужские бурки</h2>
-            <p class="product_price reveal" style="--reveal-delay: 0.15s">от&nbsp;44&nbsp;200&nbsp;₽ <span class="product_price_sep">/</span> от&nbsp;250&nbsp;000&nbsp;₸ <span class="product_price_sep">/</span> от&nbsp;$550</p>
+
+            <div class="product_price_row reveal" style="--reveal-delay: 0.15s">
+              <p class="product_price" data-price-kzt="250000" data-price-rub="44200" data-price-usd="550">от&nbsp;250&nbsp;000&nbsp;₸</p>
+              <fieldset class="currency">
+                <legend class="visually_hidden">Валюта цены</legend>
+                <label class="currency_option">
+                  <input type="radio" name="currency_men" value="kzt" checked />
+                  <span>₸</span>
+                </label>
+                <label class="currency_option">
+                  <input type="radio" name="currency_men" value="rub" />
+                  <span>₽</span>
+                </label>
+                <label class="currency_option">
+                  <input type="radio" name="currency_men" value="usd" />
+                  <span>$</span>
+                </label>
+              </fieldset>
+            </div>
             <p class="product_price_note reveal" style="--reveal-delay: 0.15s">Итоговая цена зависит от&nbsp;размера, модели и&nbsp;индивидуальных предпочтений</p>
             <p class="section_text reveal" style="--reveal-delay: 0.2s">
               Прочные и&nbsp;тёплые бурки для настоящих северных условий. Натуральные материалы, проверенная конструкция и&nbsp;комфорт в&nbsp;любой мороз.
             </p>
 
-            <ul class="product_thumbs reveal" style="--reveal-delay: 0.25s" aria-label="Другие фото">
-                <li>
-                  <button class="product_thumb" type="button">
-                    <img src="./img/catalog/men-2.jpg" data-src-light="./img/catalog/men-2-light.jpg" alt="Мужские бурки — вид спереди, другой ракурс" width="853" height="1280" loading="lazy" />
-                  </button>
-                </li>
-                <li>
-                  <button class="product_thumb" type="button">
-                    <img src="./img/catalog/men-3.jpg" data-src-light="./img/catalog/men-3-light.jpg" alt="Мужские бурки — голенища крупным планом" width="1280" height="853" loading="lazy" />
-                  </button>
-                </li>
-                <li>
-                  <button class="product_thumb" type="button">
-                    <img src="./img/catalog/men-4.jpg" data-src-light="./img/catalog/men-4-light.jpg" alt="Мужские бурки — вид сбоку, видна подошва" width="1280" height="853" loading="lazy" />
-                  </button>
-                </li>
+            <ul class="product_thumbs reveal" style="--reveal-delay: 0.25s" aria-label="Фото модели">
+              <li>
+                <button
+                  class="product_thumb"
+                  type="button"
+                  aria-pressed="true"
+                  data-photo="./img/catalog/men-1.webp"
+                  data-photo-light="./img/catalog/men-1-light.webp"
+                >
+                  <img src="./img/catalog/men-1.webp" data-src-light="./img/catalog/men-1-light.webp" alt="Мужские бурки из оленьей шкуры — пара, вид спереди" width="853" height="1280" loading="lazy" decoding="async" />
+                </button>
+              </li>
+              <li>
+                <button
+                  class="product_thumb"
+                  type="button"
+                  aria-pressed="false"
+                  data-photo="./img/catalog/men-2.webp"
+                  data-photo-light="./img/catalog/men-2-light.webp"
+                >
+                  <img src="./img/catalog/men-2.webp" data-src-light="./img/catalog/men-2-light.webp" alt="Мужские бурки — вид спереди, другой ракурс" width="853" height="1280" loading="lazy" decoding="async" />
+                </button>
+              </li>
+              <li>
+                <button
+                  class="product_thumb"
+                  type="button"
+                  aria-pressed="false"
+                  data-photo="./img/catalog/men-3.webp"
+                  data-photo-light="./img/catalog/men-3-light.webp"
+                >
+                  <img src="./img/catalog/men-3.webp" data-src-light="./img/catalog/men-3-light.webp" alt="Мужские бурки — голенища крупным планом" width="1280" height="853" loading="lazy" decoding="async" />
+                </button>
+              </li>
+              <li>
+                <button
+                  class="product_thumb"
+                  type="button"
+                  aria-pressed="false"
+                  data-photo="./img/catalog/men-4.webp"
+                  data-photo-light="./img/catalog/men-4-light.webp"
+                >
+                  <img src="./img/catalog/men-4.webp" data-src-light="./img/catalog/men-4-light.webp" alt="Мужские бурки — вид сбоку, видна подошва" width="1280" height="853" loading="lazy" decoding="async" />
+                </button>
+              </li>
             </ul>
 
             <button
@@ -212,7 +337,7 @@
               data-open-request
               data-request-message="Интересуют мужские бурки"
             >
-              Подробнее
+              Заказать
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
@@ -224,35 +349,90 @@
           <img src="./img/home-page/icon-snowflake.svg" alt="" width="24" height="24" />
         </div>
         <article class="product" id="kids" aria-labelledby="kids_title">
-          <button class="product_zoom reveal" type="button" aria-label="Открыть фото крупно: Светлые детские бурки с вышитым орнаментом">
-            <img class="product_photo" src="./img/catalog/kids-1.jpg" data-src-light="./img/catalog/kids-1-light.jpg" alt="Светлые детские бурки с вышитым орнаментом" width="853" height="1280" />
+          <button class="product_zoom reveal" type="button" aria-label="Открыть галерею: детские бурки">
+            <img
+              class="product_photo"
+              src="./img/catalog/kids-1.webp"
+              data-src-light="./img/catalog/kids-1-light.webp"
+              alt="Светлые детские бурки с вышитым орнаментом"
+              width="853"
+              height="1280"
+              decoding="async" loading="lazy"
+            />
           </button>
 
           <div class="product_content">
             <p class="section_eyebrow product_eyebrow reveal">Коллекция TAIGA</p>
             <h2 class="section_title product_title reveal" id="kids_title" style="--reveal-delay: 0.1s">Детские бурки</h2>
-            <p class="product_price reveal" style="--reveal-delay: 0.15s">от&nbsp;12&nbsp;300&nbsp;₽ <span class="product_price_sep">/</span> от&nbsp;70&nbsp;000&nbsp;₸ <span class="product_price_sep">/</span> от&nbsp;$150</p>
+
+            <div class="product_price_row reveal" style="--reveal-delay: 0.15s">
+              <p class="product_price" data-price-kzt="70000" data-price-rub="12300" data-price-usd="150">от&nbsp;70&nbsp;000&nbsp;₸</p>
+              <fieldset class="currency">
+                <legend class="visually_hidden">Валюта цены</legend>
+                <label class="currency_option">
+                  <input type="radio" name="currency_kids" value="kzt" checked />
+                  <span>₸</span>
+                </label>
+                <label class="currency_option">
+                  <input type="radio" name="currency_kids" value="rub" />
+                  <span>₽</span>
+                </label>
+                <label class="currency_option">
+                  <input type="radio" name="currency_kids" value="usd" />
+                  <span>$</span>
+                </label>
+              </fieldset>
+            </div>
             <p class="product_price_note reveal" style="--reveal-delay: 0.15s">Итоговая цена зависит от&nbsp;размера, модели и&nbsp;индивидуальных предпочтений</p>
             <p class="section_text reveal" style="--reveal-delay: 0.2s">
               Лёгкие, тёплые и&nbsp;максимально комфортные бурки для детей. Натуральная оленья шкура бережно сохраняет тепло и&nbsp;позволяет свободно двигаться.
             </p>
 
-            <ul class="product_thumbs reveal" style="--reveal-delay: 0.25s" aria-label="Другие фото">
-                <li>
-                  <button class="product_thumb" type="button">
-                    <img src="./img/catalog/kids-2.jpg" data-src-light="./img/catalog/kids-2-light.jpg" alt="Детские бурки с пёстрым мехом, вид сбоку" width="1280" height="853" loading="lazy" />
-                  </button>
-                </li>
-                <li>
-                  <button class="product_thumb" type="button">
-                    <img src="./img/catalog/kids-3.jpg" data-src-light="./img/catalog/kids-3-light.jpg" alt="Коричневые детские бурки, вид спереди" width="1280" height="853" loading="lazy" />
-                  </button>
-                </li>
-                <li>
-                  <button class="product_thumb" type="button">
-                    <img src="./img/catalog/kids-4.jpg" data-src-light="./img/catalog/kids-4-light.jpg" alt="Светлые детские бурки с тёмной полосой" width="1280" height="853" loading="lazy" />
-                  </button>
-                </li>
+            <ul class="product_thumbs reveal" style="--reveal-delay: 0.25s" aria-label="Фото модели">
+              <li>
+                <button
+                  class="product_thumb"
+                  type="button"
+                  aria-pressed="true"
+                  data-photo="./img/catalog/kids-1.webp"
+                  data-photo-light="./img/catalog/kids-1-light.webp"
+                >
+                  <img src="./img/catalog/kids-1.webp" data-src-light="./img/catalog/kids-1-light.webp" alt="Светлые детские бурки с вышитым орнаментом" width="853" height="1280" loading="lazy" decoding="async" />
+                </button>
+              </li>
+              <li>
+                <button
+                  class="product_thumb"
+                  type="button"
+                  aria-pressed="false"
+                  data-photo="./img/catalog/kids-2.webp"
+                  data-photo-light="./img/catalog/kids-2-light.webp"
+                >
+                  <img src="./img/catalog/kids-2.webp" data-src-light="./img/catalog/kids-2-light.webp" alt="Детские бурки с пёстрым мехом, вид сбоку" width="1280" height="853" loading="lazy" decoding="async" />
+                </button>
+              </li>
+              <li>
+                <button
+                  class="product_thumb"
+                  type="button"
+                  aria-pressed="false"
+                  data-photo="./img/catalog/kids-3.webp"
+                  data-photo-light="./img/catalog/kids-3-light.webp"
+                >
+                  <img src="./img/catalog/kids-3.webp" data-src-light="./img/catalog/kids-3-light.webp" alt="Коричневые детские бурки, вид спереди" width="1280" height="853" loading="lazy" decoding="async" />
+                </button>
+              </li>
+              <li>
+                <button
+                  class="product_thumb"
+                  type="button"
+                  aria-pressed="false"
+                  data-photo="./img/catalog/kids-4.webp"
+                  data-photo-light="./img/catalog/kids-4-light.webp"
+                >
+                  <img src="./img/catalog/kids-4.webp" data-src-light="./img/catalog/kids-4-light.webp" alt="Светлые детские бурки с тёмной полосой" width="1280" height="853" loading="lazy" decoding="async" />
+                </button>
+              </li>
             </ul>
 
             <button
@@ -262,13 +442,81 @@
               data-open-request
               data-request-message="Интересуют детские бурки"
             >
-              Подробнее
+              Заказать
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </button>
           </div>
         </article>
+        </div>
+      </section>
+      <!-- HOW TO MEASURE -->
+      <section class="measure" id="measure" aria-labelledby="measure_title">
+        <div class="container">
+          <div class="measure_head">
+            <p class="section_eyebrow reveal">Размер</p>
+            <h2 class="section_title reveal" id="measure_title" style="--reveal-delay: 0.1s">
+              Как снять <span class="text_accent">мерки</span>
+            </h2>
+            <p class="section_text reveal" style="--reveal-delay: 0.2s">
+              Для пошива нам нужны две мерки. Снимайте их вечером, когда стопа немного больше, и&nbsp;в&nbsp;тех носках, в&nbsp;которых будете носить бурки.
+            </p>
+          </div>
+
+          <div class="measure_cards">
+            <article class="measure_card reveal">
+              <svg class="measure_svg" viewBox="0 0 220 300" role="img" aria-label="Схема: длина стопы от пятки до самого длинного пальца">
+                <rect class="measure_paper" x="14" y="6" width="150" height="288" rx="6" />
+                <path class="measure_shape" d="M88 270c-27 0-34-28-32-58 2-30-4-58-2-88 2-35 10-62 28-77 12-10 30-10 40 4 12 18 13 50 9 85-3 35 2 70 0 100-2 24-15 34-43 34Z" />
+                <ellipse class="measure_shape" cx="106" cy="31" rx="10" ry="12" />
+                <ellipse class="measure_shape" cx="86" cy="38" rx="7" ry="8" />
+                <ellipse class="measure_shape" cx="72" cy="47" rx="6" ry="7" />
+                <ellipse class="measure_shape" cx="62" cy="59" rx="5" ry="6" />
+                <ellipse class="measure_shape" cx="56" cy="72" rx="4" ry="5" />
+                <path class="measure_guide" d="M110 19h86M110 270h86" />
+                <path class="measure_line" d="M190 25v239M184 31l6-8 6 8M184 258l6 8 6-8" />
+                <text class="measure_label" x="176" y="150" transform="rotate(-90 176 150)">длина стопы</text>
+              </svg>
+              <h3 class="measure_card_title">1. Длина стопы</h3>
+              <ol class="measure_steps">
+                <li>Встаньте на&nbsp;лист бумаги, пятка&nbsp;— к&nbsp;стене.</li>
+                <li>Отметьте самую выступающую точку самого длинного пальца.</li>
+                <li>Измерьте расстояние от&nbsp;края листа до&nbsp;отметки.</li>
+                <li>Повторите для второй ноги и&nbsp;пришлите большее значение.</li>
+              </ol>
+            </article>
+
+            <article class="measure_card reveal" style="--reveal-delay: 0.1s">
+              <svg class="measure_svg" viewBox="0 0 220 300" role="img" aria-label="Схема: обхват голени в самой широкой части">
+                <path class="measure_shape" d="M92 12c-6 68-4 148 4 216M138 12c32 48 34 108 14 156-10 24-16 46-14 70 2 24-4 42-16 46h62c12 0 12-14 0-18l-50-12c-22-6-34-14-38-42" />
+                <ellipse class="measure_line" cx="127" cy="104" rx="42" ry="9" />
+                <path class="measure_guide" d="M169 104h40" />
+                <text class="measure_label" x="190" y="92">обхват</text>
+              </svg>
+              <h3 class="measure_card_title">2. Обхват голени</h3>
+              <ol class="measure_steps">
+                <li>Встаньте прямо, вес на&nbsp;обе ноги.</li>
+                <li>Найдите самую широкую часть голени.</li>
+                <li>Оберните сантиметровую ленту горизонтально, не&nbsp;затягивая.</li>
+                <li>Если будете носить бурки поверх брюк&nbsp;— мерьте в&nbsp;них.</li>
+              </ol>
+            </article>
+          </div>
+
+          <div class="measure_cta reveal">
+            <button
+              class="btn btn_primary btn_arrow"
+              type="button"
+              data-open-request
+              data-request-message="Мои мерки: длина стопы — … см, обхват голени — … см"
+            >
+              Отправить мерки
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
         </div>
       </section>
     </main>
@@ -280,7 +528,7 @@
           <div class="footer_brand">
             <img
               class="footer_logo"
-              src="./img/general/logo-header.png"
+              src="./img/general/logo-header.webp"
               alt="TAIGA"
               width="270"
               height="158"
@@ -342,7 +590,6 @@
 
         <div class="footer_bottom">
           <p>© 2026 TAIGA. Все права защищены.</p>
-          <p>Политика конфиденциальности</p>
         </div>
       </div>
     </footer>
@@ -431,6 +678,11 @@
           ></textarea>
         </div>
 
+        <p class="request_error" id="request_error" role="alert" hidden>
+          Не&nbsp;удалось отправить заявку. Попробуйте ещё раз или напишите нам
+          в&nbsp;<a href="https://wa.me/77053397249" target="_blank" rel="noopener">WhatsApp</a>.
+        </p>
+
         <button class="btn btn_primary btn_arrow request_submit" type="submit">
           Отправить заявку
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -452,7 +704,7 @@
     </dialog>
     <!-- PHOTO VIEWER -->
     <dialog class="lightbox" id="photo_dialog" aria-label="Просмотр фото">
-      <img class="lightbox_img" src="" alt="" />
+      <img class="lightbox_img" src="./img/catalog/women-1.webp" alt="" loading="lazy" />
       <p class="lightbox_counter" aria-live="polite"></p>
 
       <button class="icon_btn lightbox_close" type="button" aria-label="Закрыть просмотр" data-close-lightbox>

@@ -93,6 +93,7 @@ function openRequest(message) {
   }
   requestForm.hidden = false;
   requestSuccess.hidden = true;
+  requestError.hidden = true;
   requestDialog.showModal();
   nameInput.focus();
   document.body.classList.add("dialog_open");
@@ -137,17 +138,57 @@ requestForm.addEventListener("change", (event) => {
   input.addEventListener("input", () => clearError(input));
 });
 
-requestForm.addEventListener("submit", (event) => {
+const REQUEST_ENDPOINT = "";
+
+const requestError = document.getElementById("request_error");
+const submitButton = requestForm.querySelector(".request_submit");
+const submitLabel = submitButton.firstChild;
+
+function setSending(isSending) {
+  submitButton.disabled = isSending;
+  submitLabel.textContent = isSending ? "Отправляем… " : "Отправить заявку ";
+}
+
+async function sendRequest(data) {
+  if (!REQUEST_ENDPOINT) throw new Error("No request endpoint");
+
+  const response = await fetch(REQUEST_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok || !result.ok) throw new Error("Request failed");
+}
+
+requestForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+  requestError.hidden = true;
 
   if (!validateForm()) {
     requestForm.querySelector("[aria-invalid='true']").focus();
     return;
   }
 
-  const name = nameInput.value.trim();
-  document.getElementById("request_success_title").textContent = `Спасибо, ${name}!`;
+  const data = {
+    name: nameInput.value.trim(),
+    method: requestForm.elements.method.value,
+    contact: contactInput.value.trim(),
+    message: messageInput.value.trim(),
+    page: document.title,
+  };
 
+  setSending(true);
+  try {
+    await sendRequest(data);
+  } catch {
+    requestError.hidden = false;
+    setSending(false);
+    return;
+  }
+  setSending(false);
+
+  document.getElementById("request_success_title").textContent = `Спасибо, ${data.name}!`;
   requestForm.reset();
   updateContactField();
   requestForm.hidden = true;

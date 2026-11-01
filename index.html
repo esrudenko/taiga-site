@@ -3,7 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TAIGA</title>
+    <title>TAIGA — бурки из оленьей шкуры ручной работы</title>
+    <meta name="description" content="Бурки TAIGA из натуральной оленьей шкуры: ручная работа, северные традиции, индивидуальный пошив по меркам и доставка по Казахстану, России и миру." />
+    <link rel="canonical" href="https://esrudenko.github.io/taiga-site/" />
+    <meta name="theme-color" content="#0E0D0B" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="TAIGA" />
+    <meta property="og:title" content="TAIGA — бурки из оленьей шкуры ручной работы" />
+    <meta property="og:description" content="Бурки TAIGA из натуральной оленьей шкуры: ручная работа, северные традиции, индивидуальный пошив по меркам и доставка по Казахстану, России и миру." />
+    <meta property="og:url" content="https://esrudenko.github.io/taiga-site/" />
+    <meta property="og:image" content="https://esrudenko.github.io/taiga-site/img/general/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="./img/general/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,6 +30,7 @@
     <link rel="stylesheet" href="./css/hero.css" />
     <link rel="stylesheet" href="./css/features.css" />
     <link rel="stylesheet" href="./css/about.css" />
+    <link rel="stylesheet" href="./css/collection.css" />
     <link rel="stylesheet" href="./css/split.css" />
     <link rel="stylesheet" href="./css/footer.css" />
     <link rel="stylesheet" href="./css/request.css" />
@@ -33,13 +47,15 @@
     <script src="./js/features.js" defer></script>
   </head>
   <body>
+    <a class="skip_link" href="#main">Перейти к&nbsp;содержанию</a>
+
     <!-- HEADER -->
     <header class="header">
       <div class="container header_container">
         <a class="logo_link" href="#" aria-label="Taiga — наверх страницы">
           <img
             class="logo_img"
-            src="./img/general/logo-header.png"
+            src="./img/general/logo-header.webp"
             alt=""
             width="120"
             height="70"
@@ -110,7 +126,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main" tabindex="-1">
       <!-- HERO -->
       <section class="hero" id="hero">
         <div class="container hero_container">
@@ -190,6 +206,89 @@
         </div>
       </section>
 
+      <!-- COLLECTION -->
+      <section class="collection" id="collection" aria-labelledby="collection_title">
+        <div class="container">
+          <div class="collection_head">
+            <h2 class="section_title collection_title reveal" id="collection_title">
+              <span>Коллекция <span class="text_accent">TAIGA</span></span>
+            </h2>
+            <p class="section_text collection_subtitle reveal" style="--reveal-delay: 0.1s">
+              Традиционные бурки ручной работы для всей семьи
+            </p>
+          </div>
+
+          <ul class="collection_list">
+            <li class="collection_card reveal" style="--reveal-delay: 0.0s">
+              <img
+                class="collection_photo"
+                src="./img/catalog/women-1.webp"
+                data-src-light="./img/catalog/women-1-light.webp"
+                alt="Тёмные женские бурки с красной вышивкой"
+                width="853"
+                height="1280"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3 class="collection_name">Женские</h3>
+              <p class="collection_text">Тепло, комфорт и&nbsp;естественная элегантность</p>
+              <a class="btn btn_arrow collection_btn" href="./catalog.html#women" aria-label="Смотреть: женские бурки">
+                Смотреть
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </li>
+            <li class="collection_card collection_card_featured reveal" style="--reveal-delay: 0.1s">
+              <span class="collection_badge" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="8" cy="7" r="2.6" /><circle cx="16.5" cy="8.5" r="2.1" />
+                  <path d="M3.5 19c0-3 2-5.2 4.5-5.2s4.5 2.2 4.5 5.2M13 19c0-2.4 1.6-4.2 3.5-4.2s3.5 1.8 3.5 4.2" />
+                </svg>
+              </span>
+              <img
+                class="collection_photo"
+                src="./img/catalog/kids-1.webp"
+                data-src-light="./img/catalog/kids-1-light.webp"
+                alt="Светлые детские бурки с вышитым орнаментом"
+                width="853"
+                height="1280"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3 class="collection_name">Детские</h3>
+              <p class="collection_text">Натуральные материалы и&nbsp;забота о&nbsp;самых важных</p>
+              <a class="btn btn_primary btn_arrow collection_btn" href="./catalog.html#kids" aria-label="Подробнее: детские бурки">
+                Подробнее
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </li>
+            <li class="collection_card reveal" style="--reveal-delay: 0.2s">
+              <img
+                class="collection_photo"
+                src="./img/catalog/men-1.webp"
+                data-src-light="./img/catalog/men-1-light.webp"
+                alt="Мужские бурки из оленьей шкуры — пара, вид спереди"
+                width="853"
+                height="1280"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3 class="collection_name">Мужские</h3>
+              <p class="collection_text">Надёжность, тепло и&nbsp;традиции северного мастерства</p>
+              <a class="btn btn_arrow collection_btn" href="./catalog.html#men" aria-label="Смотреть: мужские бурки">
+                Смотреть
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <!-- SEWING -->
       <section class="sewing" id="sewing">
         <div class="container split">
@@ -241,6 +340,13 @@
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </button>
+
+            <a class="text_link sewing_measure_link reveal" href="./catalog.html#measure" style="--reveal-delay: 0.5s">
+              Как снять мерки
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
           </div>
         </div>
       </section>
@@ -276,6 +382,18 @@
                 </p>
               </li>
             </ul>
+
+            <dl class="delivery_terms reveal" style="--reveal-delay: 0.4s">
+              <div class="delivery_term">
+                <dt>Изготовление</dt>
+                <dd>14&nbsp;дней</dd>
+              </div>
+              <div class="delivery_term">
+                <dt>Доставка</dt>
+                <dd>от&nbsp;10&nbsp;дней</dd>
+              </div>
+            </dl>
+            <p class="delivery_terms_note reveal" style="--reveal-delay: 0.4s">Сроки ориентировочные и&nbsp;зависят от&nbsp;выбранной модели и&nbsp;транспортной компании.</p>
           </div>
         </div>
       </section>
@@ -288,7 +406,7 @@
           <div class="footer_brand">
             <img
               class="footer_logo"
-              src="./img/general/logo-header.png"
+              src="./img/general/logo-header.webp"
               alt="TAIGA"
               width="270"
               height="158"
@@ -350,7 +468,6 @@
 
         <div class="footer_bottom">
           <p>© 2026 TAIGA. Все права защищены.</p>
-          <p>Политика конфиденциальности</p>
         </div>
       </div>
     </footer>
@@ -438,6 +555,11 @@
             placeholder="Размер, модель, пожелания по пошиву…"
           ></textarea>
         </div>
+
+        <p class="request_error" id="request_error" role="alert" hidden>
+          Не&nbsp;удалось отправить заявку. Попробуйте ещё раз или напишите нам
+          в&nbsp;<a href="https://wa.me/77053397249" target="_blank" rel="noopener">WhatsApp</a>.
+        </p>
 
         <button class="btn btn_primary btn_arrow request_submit" type="submit">
           Отправить заявку
