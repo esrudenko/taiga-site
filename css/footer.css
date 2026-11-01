@@ -109,6 +109,17 @@
   display: inline-block;
 }
 
+.footer_list .footer_link,
+.footer_contact_text {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  text-underline-offset: 6px;
+  transition:
+    color var(--transition),
+    text-decoration-color var(--transition);
+}
+
 .footer_link {
   font-family: var(--font-title);
   font-size: 1rem;
