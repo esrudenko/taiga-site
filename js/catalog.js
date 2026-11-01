@@ -61,6 +61,8 @@ document.querySelectorAll(".product").forEach((product) => {
     mainPhoto.dataset.srcDark = thumb.dataset.photo;
     mainPhoto.dataset.srcLight = thumb.dataset.photoLight;
     mainPhoto.alt = thumb.querySelector("img").alt;
+    mainPhoto.dataset.positionDark = thumb.dataset.position || "";
+    mainPhoto.dataset.positionLight = thumb.dataset.positionLight || "";
     thumbs.forEach((item, i) => item.setAttribute("aria-pressed", String(i === active)));
     applyThemePhotos();
     fadeIn(mainPhoto);

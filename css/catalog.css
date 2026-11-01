@@ -77,10 +77,11 @@
   transition: border-color var(--transition);
   width: min(
     calc((min(100vw, 1440px) - 2 * var(--container-padding) - var(--product-gap)) / 2),
-    calc((100svh - var(--header-height) - 3rem) * 0.8)
+    calc((100svh - var(--header-height) - 3rem) * 6 / 7)
   );
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 6 / 7;
   object-fit: cover;
+  object-position: center bottom;
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
 }
@@ -136,6 +137,7 @@
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
+  object-position: center 80%;
   transition: transform 0.5s ease;
 }
 
@@ -195,7 +197,7 @@
 
   .product_zoom {
     order: 1;
-    width: min(100%, calc(45svh * 0.8));
+    width: min(100%, calc(45svh * 6 / 7));
     margin-bottom: 0.75rem;
   }
 
@@ -205,7 +207,7 @@
 
   .product_thumbs {
     order: 2;
-    width: min(100%, calc(45svh * 0.8));
+    width: min(100%, calc(45svh * 6 / 7));
     margin: 0 0 1.75rem;
     gap: 0.5rem;
   }
