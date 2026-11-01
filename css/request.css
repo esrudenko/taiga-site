@@ -298,3 +298,27 @@ body.dialog_open {
     line-height: 130%;
   }
 }
+
+.request_error {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 145%;
+  color: var(--color-text);
+  background: color-mix(in srgb, #D9534F 14%, transparent);
+  border: 1px solid color-mix(in srgb, #D9534F 55%, transparent);
+  border-radius: 0.75em;
+}
+
+.request_error[hidden] {
+  display: none;
+}
+
+.request_error a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.request_submit:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
