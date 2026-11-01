@@ -18,12 +18,9 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="./img/general/favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Manrope:wght@400;500;600;700&family=Prata&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="./fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./fonts/prata-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="./css/fonts.css" />
     <link rel="stylesheet" href="./css/variables.css" />
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/header.css" />
@@ -465,6 +462,7 @@
 
         <div class="footer_bottom">
           <p>© 2026 TAIGA. Все права защищены.</p>
+          <a class="footer_link" href="./privacy.html">Политика конфиденциальности</a>
         </div>
       </div>
     </footer>
@@ -551,6 +549,23 @@
             maxlength="1000"
             placeholder="Размер, модель, пожелания по пошиву…"
           ></textarea>
+        </div>
+
+        <div class="field_trap" aria-hidden="true">
+          <label for="request_website">Не заполняйте это поле</label>
+          <input id="request_website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="field field_consent">
+          <label class="consent">
+            <input class="consent_input" id="request_consent" name="consent" type="checkbox" aria-describedby="request_consent_error" />
+            <span class="consent_box" aria-hidden="true"></span>
+            <span class="consent_text">
+              Я&nbsp;соглашаюсь на&nbsp;обработку персональных данных в&nbsp;соответствии
+              с&nbsp;<a href="./privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>
+            </span>
+          </label>
+          <p class="field_error" id="request_consent_error" aria-live="polite"></p>
         </div>
 
         <p class="request_error" id="request_error" role="alert" hidden>

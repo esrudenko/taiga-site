@@ -3,6 +3,9 @@ const requestForm = document.getElementById("request_form");
 const requestSuccess = document.getElementById("request_success");
 const nameInput = document.getElementById("request_name");
 const messageInput = document.getElementById("request_message");
+const consentInput = document.getElementById("request_consent");
+const trapInput = document.getElementById("request_website");
+let requestOpenedAt = 0;
 const contactInput = document.getElementById("request_contact");
 const contactLabel = document.getElementById("request_contact_label");
 
@@ -83,6 +86,11 @@ function validateForm() {
     isValid = false;
   }
 
+  if (!consentInput.checked) {
+    showError(consentInput, "Нужно согласие на обработку данных");
+    isValid = false;
+  }
+
   return isValid;
 }
 
@@ -94,6 +102,7 @@ function openRequest(message) {
   requestForm.hidden = false;
   requestSuccess.hidden = true;
   requestError.hidden = true;
+  requestOpenedAt = Date.now();
   requestDialog.showModal();
   requestDialog.scrollTop = 0;
   if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
@@ -141,7 +150,9 @@ requestForm.addEventListener("change", (event) => {
   input.addEventListener("input", () => clearError(input));
 });
 
-const REQUEST_ENDPOINT = "";
+consentInput.addEventListener("change", () => clearError(consentInput));
+
+const REQUEST_ENDPOINT = "./server/send.php";
 
 const requestError = document.getElementById("request_error");
 const submitButton = requestForm.querySelector(".request_submit");
@@ -178,12 +189,15 @@ requestForm.addEventListener("submit", async (event) => {
     method: requestForm.elements.method.value,
     contact: contactInput.value.trim(),
     message: messageInput.value.trim(),
+    consent: consentInput.checked,
+    website: trapInput.value,
+    elapsed: Date.now() - requestOpenedAt,
     page: document.title,
   };
 
   setSending(true);
   try {
-    await sendRequest(data);
+    if (!data.website) await sendRequest(data);
   } catch {
     requestError.hidden = false;
     setSending(false);

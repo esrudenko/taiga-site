@@ -206,3 +206,13 @@
     transition-duration: 0s;
   }
 }
+
+.footer_bottom .footer_link {
+  font-family: var(--font-main);
+  font-size: inherit;
+  color: var(--color-text-muted);
+}
+
+.footer_link[aria-current="page"] {
+  color: var(--color-accent);
+}
