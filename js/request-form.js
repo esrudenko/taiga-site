@@ -105,9 +105,7 @@ function openRequest(message) {
   requestOpenedAt = Date.now();
   requestDialog.showModal();
   requestDialog.scrollTop = 0;
-  if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
-    nameInput.focus({ preventScroll: true });
-  }
+  requestDialog.focus({ preventScroll: true });
   setScrollLock("request", true);
 }
 
