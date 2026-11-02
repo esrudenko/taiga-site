@@ -345,7 +345,7 @@
 
 .measure_card {
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
+  grid-template-columns: 180px minmax(0, 1fr);
   grid-template-rows: auto 1fr;
   column-gap: 1.5rem;
   padding: clamp(1.25rem, 3vw, 2rem);
@@ -356,46 +356,45 @@
 
 .measure_svg {
   grid-row: span 2;
+  align-self: center;
   width: 100%;
-  height: auto;
+  height: 200px;
+  color: color-mix(in srgb, var(--color-accent) 70%, #FFFFFF);
 }
 
-.measure_paper {
-  fill: none;
-  stroke: var(--color-border);
-  stroke-width: 2;
-}
-
-.measure_shape {
-  fill: none;
-  stroke: var(--color-text-muted);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.measure_line {
-  fill: none;
-  stroke: var(--color-accent);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.measure_guide {
-  fill: none;
-  stroke: var(--color-accent);
-  stroke-width: 1.5;
-  stroke-dasharray: 4 4;
+.measure_pic {
+  background-color: currentColor;
+  -webkit-mask: var(--pic) center / contain no-repeat;
+  mask: var(--pic) center / contain no-repeat;
 }
 
 .measure_label {
-  fill: var(--color-accent);
+  fill: currentColor;
+  stroke: none;
   font-family: var(--font-main);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  text-anchor: middle;
+  letter-spacing: 0.02em;
 }
+
+.measure_label_big {
+  font-size: 72px;
+}
+
+.measure_pic_calf {
+  --pic: url("../img/catalog/measure-calf.png");
+}
+
+.light_theme .measure_svg {
+  color: var(--color-accent);
+}
+
+
+
+
+
+
+
 
 .measure_card_title {
   align-self: end;
@@ -440,7 +439,7 @@
 
   .measure_svg {
     grid-row: auto;
-    width: 150px;
+    width: 200px;
     justify-self: center;
   }
 
