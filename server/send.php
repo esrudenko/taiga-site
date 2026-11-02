@@ -79,21 +79,27 @@ $text = implode("\n", [
     'Время: ' . (new DateTime('now', new DateTimeZone('Asia/Almaty')))->format('d.m.Y H:i'),
 ]);
 
+$logFile = sys_get_temp_dir() . '/taiga_last_error.txt';
+
 $sentToTelegram = false;
+$telegramError = 'not configured';
 if (!empty($config['telegram_token']) && !empty($config['telegram_chat_id'])) {
-    $curl = curl_init('https://api.telegram.org/bot' . $config['telegram_token'] . '/sendMessage');
+    $curl = curl_init('https://api.telegram.org/bot' . trim($config['telegram_token']) . '/sendMessage');
     curl_setopt_array($curl, [
         CURLOPT_POST => true,
-        CURLOPT_POSTFIELDS => ['chat_id' => $config['telegram_chat_id'], 'text' => $text],
+        CURLOPT_POSTFIELDS => ['chat_id' => trim((string) $config['telegram_chat_id']), 'text' => $text],
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT => 10,
+        CURLOPT_CONNECTTIMEOUT => 8,
+        CURLOPT_TIMEOUT => 15,
     ]);
-    $response = json_decode((string) curl_exec($curl), true);
+    $raw = curl_exec($curl);
+    $curlError = curl_error($curl);
     curl_close($curl);
+    $response = json_decode((string) $raw, true);
     $sentToTelegram = ($response['ok'] ?? false) === true;
+    $telegramError = $sentToTelegram ? '' : ($curlError !== '' ? 'curl: ' . $curlError : 'api: ' . ($response['description'] ?? 'no response'));
 }
 
-$sentByEmail = false;
 if (!empty($config['email_to']) && !empty($config['email_from'])) {
     $headers = implode("\r\n", [
         'From: TAIGA <' . $config['email_from'] . '>',
@@ -101,10 +107,11 @@ if (!empty($config['email_to']) && !empty($config['email_from'])) {
         'Content-Transfer-Encoding: 8bit',
     ]);
     $subject = '=?UTF-8?B?' . base64_encode('Заявка с сайта TAIGA: ' . $name) . '?=';
-    $sentByEmail = mail($config['email_to'], $subject, $text, $headers);
+    @mail($config['email_to'], $subject, $text, $headers);
 }
 
-if ($sentToTelegram || $sentByEmail) {
+if ($sentToTelegram) {
     reply(true);
 }
+file_put_contents($logFile, date('c') . ' telegram ' . $telegramError . "\n", LOCK_EX);
 reply(false, 502, 'Could not deliver');
