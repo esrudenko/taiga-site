@@ -2,7 +2,7 @@
 
 Сайт бренда TAIGA: бурки ручной работы из натуральной оленьей шкуры.
 
-**Сайт:** https://esrudenko.github.io/taiga-site/
+**Сайт:** https://taiga-burki.kz/
 
 ## Страницы
 
